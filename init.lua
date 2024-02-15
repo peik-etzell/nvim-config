@@ -38,6 +38,7 @@ set.smartcase = true
 set.foldmethod = 'expr'
 set.foldexpr = 'nvim_treesitter#foldexpr()'
 set.foldenable = false
+set.foldlevel = 99
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
