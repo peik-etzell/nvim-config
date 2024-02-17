@@ -100,7 +100,7 @@ return {
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp-signature-help',
-            'p00f/clangd_extensions.nvim',
+            'https://git.sr.ht/~p00f/clangd_extensions.nvim',
             -- "rcarriga/cmp-dap",
             'onsails/lspkind.nvim', -- symbols
             {
