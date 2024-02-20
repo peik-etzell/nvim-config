@@ -30,6 +30,7 @@ set.list = true
 set.title = true
 set.cursorline = true
 set.scrolloff = 10 -- Scroll offset
+set.sidescrolloff = 10
 set.colorcolumn = '80'
 set.ignorecase = true
 set.smartcase = true
