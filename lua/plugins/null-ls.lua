@@ -6,62 +6,66 @@ return {
         config = function()
             local null_ls = require('null-ls')
             local builtins = null_ls.builtins
+            local fmt = builtins.formatting
+            local diagnostics = builtins.diagnostics
+            local code_actions = builtins.code_actions
             null_ls.setup({
                 sources = {
                     -- Lua
-                    builtins.formatting.stylua,
+                    fmt.stylua,
 
                     -- JS/TS
-                    builtins.formatting.prettierd,
-                    builtins.code_actions.eslint_d,
+                    fmt.prettierd,
+                    code_actions.eslint_d,
 
                     -- XML
-                    builtins.formatting.xmlformat,
+                    fmt.xmlformat,
 
                     -- Tex
-                    builtins.formatting.latexindent,
-                    builtins.diagnostics.chktex,
+                    fmt.latexindent,
+                    diagnostics.chktex,
 
                     -- Shell
-                    builtins.formatting.shfmt,
-                    builtins.diagnostics.shellcheck,
-                    builtins.code_actions.shellcheck,
-                    builtins.formatting.beautysh,
-                    builtins.diagnostics.zsh,
+                    fmt.shfmt,
+                    diagnostics.shellcheck,
+                    code_actions.shellcheck,
+                    fmt.beautysh,
+                    diagnostics.zsh,
 
                     -- Protobuf
-                    builtins.diagnostics.buf,
-                    builtins.formatting.buf,
+                    diagnostics.buf,
+                    fmt.buf,
 
                     -- Python
-                    -- builtins.diagnostics.pylint,
-                    builtins.formatting.black,
+                    -- diagnostics.pylint,
+                    fmt.black,
 
-                    builtins.diagnostics.statix,
-                    builtins.code_actions.statix,
-                    builtins.formatting.nixfmt,
+                    diagnostics.statix,
+                    code_actions.statix,
+                    fmt.nixfmt,
 
-                    builtins.code_actions.refactoring,
-                    builtins.code_actions.gitsigns,
-                    builtins.diagnostics.gitlint,
-                    builtins.code_actions.proselint,
-                    builtins.diagnostics.proselint,
+                    code_actions.refactoring,
+                    code_actions.gitsigns,
+                    diagnostics.gitlint,
+                    code_actions.proselint,
+                    diagnostics.proselint,
 
                     -- Markdown
-                    -- builtins.formatting.markdownlint,
-                    builtins.diagnostics.markdownlint.with({
+                    -- fmt.markdownlint,
+                    diagnostics.markdownlint.with({
                         args = { '--disable MD013' },
                     }),
+                    builtins.hover.dictionary,
 
                     -- C/C++ / CMake / Make
-                    -- builtins.diagnostics.clang_check,
-                    builtins.diagnostics.cpplint.with({
+                    -- diagnostics.clang_check,
+                    diagnostics.cpplint.with({
                         args = { '--linelength=120' }, -- ROS
                     }),
-                    builtins.diagnostics.cppcheck,
-                    builtins.formatting.clang_format,
-                    builtins.diagnostics.cmake_lint,
-                    builtins.formatting.cmake_format,
+                    diagnostics.cppcheck,
+                    fmt.clang_format,
+                    diagnostics.cmake_lint,
+                    fmt.cmake_format,
                 },
             })
         end,
