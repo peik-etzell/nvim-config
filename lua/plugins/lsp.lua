@@ -44,7 +44,7 @@ return {
                         vim.fn.has('nvim-0.10') == 1
                         and client.server_capabilities.inlayHintProvider
                     then
-                        vim.lsp.inlay_hint(event.buf, true)
+                        -- vim.lsp.inlay_hint(event.buf, true)
                     end
 
                     local function set_keymap(lhs, rhs)
