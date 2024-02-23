@@ -49,7 +49,9 @@ return {
 
                     -- Markdown
                     -- builtins.formatting.markdownlint,
-                    builtins.diagnostics.markdownlint,
+                    builtins.diagnostics.markdownlint.with({
+                        args = { '--disable MD013' },
+                    }),
 
                     -- C/C++ / CMake / Make
                     -- builtins.diagnostics.clang_check,
