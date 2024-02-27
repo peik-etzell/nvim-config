@@ -68,6 +68,9 @@ return {
                         mode = 'symbol',
                     }),
                 },
+                experimental = {
+                    ghost_text = true,
+                },
             })
 
             -- `/` cmdline setup.
