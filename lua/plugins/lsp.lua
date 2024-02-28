@@ -20,11 +20,6 @@ return {
                 'https://git.sr.ht/~p00f/clangd_extensions.nvim',
                 ft = { 'cpp', 'c' },
             },
-            {
-                'simrat39/rust-tools.nvim',
-                dependencies = { 'nvim-lua/plenary.nvim' },
-                opts = {},
-            },
         },
         event = 'VeryLazy',
         config = function()
