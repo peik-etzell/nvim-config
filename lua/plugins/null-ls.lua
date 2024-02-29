@@ -16,20 +16,9 @@ return {
 
                     -- JS/TS
                     fmt.prettierd,
-                    code_actions.eslint_d,
-
-                    -- XML
-                    fmt.xmlformat,
-
-                    -- Tex
-                    fmt.latexindent,
-                    diagnostics.chktex,
 
                     -- Shell
                     fmt.shfmt,
-                    diagnostics.shellcheck,
-                    code_actions.shellcheck,
-                    fmt.beautysh,
                     diagnostics.zsh,
 
                     -- Protobuf
@@ -58,10 +47,6 @@ return {
                     builtins.hover.dictionary,
 
                     -- C/C++ / CMake / Make
-                    -- diagnostics.clang_check,
-                    diagnostics.cpplint.with({
-                        args = { '--linelength=120' }, -- ROS
-                    }),
                     diagnostics.cppcheck,
                     fmt.clang_format,
                     diagnostics.cmake_lint,

@@ -84,6 +84,8 @@ return {
                 'cssls',
                 'html',
                 'marksman',
+                'lemminx',
+                'eslint',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
