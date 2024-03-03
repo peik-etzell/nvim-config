@@ -87,6 +87,7 @@ return {
                 'marksman',
                 'lemminx',
                 'eslint',
+                'asm_lsp',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
