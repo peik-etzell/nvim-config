@@ -51,6 +51,7 @@ return {
                         )
                     end
                     set_keymap('K', vim.lsp.buf.hover)
+                    set_keymap('<C-S-k>', vim.lsp.buf.signature_help)
                     set_keymap('<leader>rn', vim.lsp.buf.rename)
                     set_keymap('<C-k>', function()
                         vim.diagnostic.open_float({ border = vim.g.border })
