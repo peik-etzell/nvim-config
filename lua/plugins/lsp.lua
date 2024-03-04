@@ -33,15 +33,6 @@ return {
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP on_attach',
                 callback = function(event)
-                    local client =
-                        vim.lsp.get_client_by_id(event.data.client_id)
-                    if
-                        vim.fn.has('nvim-0.10') == 1
-                        and client.server_capabilities.inlayHintProvider
-                    then
-                        -- vim.lsp.inlay_hint(event.buf, true)
-                    end
-
                     local function set_keymap(lhs, rhs)
                         vim.keymap.set(
                             'n',
@@ -71,9 +62,7 @@ return {
 
             local servers = {
                 'typst_lsp',
-                -- 'pylsp',
                 'pyright',
-                'yamlls',
                 'texlab',
                 'openscad_lsp',
                 'cmake',

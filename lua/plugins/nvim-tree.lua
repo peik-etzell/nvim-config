@@ -14,6 +14,13 @@ return {
                         git_placement = 'after',
                         modified_placement = 'after',
                     },
+                    special_files = {
+                        'Cargo.toml',
+                        'Makefile',
+                        'makefile',
+                        'README.md',
+                        'default.nix',
+                    },
                 },
                 actions = {
                     open_file = {

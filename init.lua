@@ -8,6 +8,7 @@ vim.filetype.add({
         rviz = 'yaml',
         scad = 'openscad',
         typ = 'typst',
+        eta = 'html',
     },
 })
 
