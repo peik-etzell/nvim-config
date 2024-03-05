@@ -9,6 +9,7 @@ vim.filetype.add({
         scad = 'openscad',
         typ = 'typst',
         eta = 'html',
+        gnuplot = 'gnuplot',
     },
 })
 
