@@ -1,8 +1,9 @@
 return {
     {
         'nvim-lualine/lualine.nvim',
-        enabled = false,
+        dependencies = { 'arkav/lualine-lsp-progress' },
         init = function()
+            local filepath = { 'filename', path = 1 }
             require('lualine').setup({
                 options = {
                     theme = 'auto',
@@ -24,15 +25,14 @@ return {
                     refresh = {
                         statusline = 1000,
                         tabline = 1000,
-                        winbar = 1000,
+                        winbar = 500,
                     },
                 },
                 sections = {
                     lualine_a = { 'mode' },
-                    lualine_b = { 'branch', 'diff', 'diagnostics' },
-                    lualine_c = {},
-                    -- lualine_c = {},
-                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                    lualine_b = { 'branch', 'diff' },
+                    lualine_c = { 'diagnostics' },
+                    lualine_x = { 'filetype' },
                     lualine_y = { 'progress' },
                     lualine_z = { 'location' },
                 },
@@ -46,15 +46,29 @@ return {
                 },
                 tabline = {},
                 winbar = {
-                    lualine_a = { { 'filename', path = 1 } },
+                    lualine_a = {},
                     lualine_b = {},
-                    lualine_c = {},
-                    lualine_x = {},
+                    lualine_c = { filepath },
+                    lualine_x = {
+                        {
+                            'lsp_progress',
+                            spinner_symbols = {
+                                '🌑 ',
+                                '🌒 ',
+                                '🌓 ',
+                                '🌔 ',
+                                '🌕 ',
+                                '🌖 ',
+                                '🌗 ',
+                                '🌘 ',
+                            },
+                        },
+                    },
                     lualine_y = {},
                     lualine_z = {},
                 },
                 inactive_winbar = {
-                    lualine_a = { { 'filename', path = 1 } },
+                    lualine_a = { filepath },
                     lualine_b = {},
                     lualine_c = {},
                     lualine_x = {},
