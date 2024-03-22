@@ -4,6 +4,7 @@ return {
         dependencies = {
             { 'linrongbin16/lsp-progress.nvim', opts = {} },
         },
+        enabled = not vim.g.started_by_firenvim,
         init = function()
             local filepath = { 'filename', path = 1 }
             require('lualine').setup({
