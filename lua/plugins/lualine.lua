@@ -1,7 +1,9 @@
 return {
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'arkav/lualine-lsp-progress' },
+        dependencies = {
+            { 'linrongbin16/lsp-progress.nvim', opts = {} },
+        },
         init = function()
             local filepath = { 'filename', path = 1 }
             require('lualine').setup({
@@ -30,8 +32,8 @@ return {
                 },
                 sections = {
                     lualine_a = { 'mode' },
-                    lualine_b = { 'branch', 'diff' },
-                    lualine_c = { 'diagnostics' },
+                    lualine_b = { 'branch' },
+                    lualine_c = { 'diff' },
                     lualine_x = { 'filetype' },
                     lualine_y = { 'progress' },
                     lualine_z = { 'location' },
@@ -50,19 +52,8 @@ return {
                     lualine_b = {},
                     lualine_c = { filepath },
                     lualine_x = {
-                        {
-                            'lsp_progress',
-                            spinner_symbols = {
-                                '🌑 ',
-                                '🌒 ',
-                                '🌓 ',
-                                '🌔 ',
-                                '🌕 ',
-                                '🌖 ',
-                                '🌗 ',
-                                '🌘 ',
-                            },
-                        },
+                        'diagnostics',
+                        require('lsp-progress').progress,
                     },
                     lualine_y = {},
                     lualine_z = {},
