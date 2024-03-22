@@ -10,6 +10,7 @@ vim.filetype.add({
         typ = 'typst',
         eta = 'html',
         gnuplot = 'gnuplot',
+        plt = 'gnuplot',
     },
 })
 
