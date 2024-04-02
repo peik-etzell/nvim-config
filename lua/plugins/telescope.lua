@@ -42,6 +42,10 @@ return {
                         '%.aux',
                         '%.pdf',
                         'indent.log',
+
+                        -- Binary files
+                        '%.pcd',
+
                         -- ros
                         'build/',
                         'install/',
