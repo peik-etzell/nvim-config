@@ -40,6 +40,7 @@ return {
                         '%.fdb_latexmk',
                         '%.synctex.gz',
                         '%.aux',
+                        '%.pdf',
                         'indent.log',
                         -- ros
                         'build/',
