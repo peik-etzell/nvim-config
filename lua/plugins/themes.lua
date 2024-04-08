@@ -15,6 +15,7 @@ return {
             },
         },
     },
+    { 'yorickpeterse/vim-paper' },
     { 'ellisonleao/gruvbox.nvim' },
     { 'catppuccin/nvim' },
     { 'nvim-tree/nvim-web-devicons', opts = { color_icons = true } },

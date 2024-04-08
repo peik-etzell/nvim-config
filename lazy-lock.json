@@ -48,6 +48,7 @@
   "typst.vim": { "branch": "main", "commit": "8dbc6160138b8d12adbdce5d54595de9fbee9e8c" },
   "vim-just": { "branch": "main", "commit": "ace92c34d72a413d51459ce5e9503e50f3262988" },
   "vim-kitty": { "branch": "main", "commit": "dc5086d4bdd3cc99133015dad0a1f1b3b61f5aaf" },
+  "vim-paper": { "branch": "main", "commit": "c4995be5a73a5b24d69a9ebd932a4e9be58fdb90" },
   "vimtex": { "branch": "master", "commit": "577f7c59a4c0047ef354eb2f6fef39cbdc9a4556" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
