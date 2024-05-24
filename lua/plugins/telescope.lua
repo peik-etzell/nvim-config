@@ -47,7 +47,7 @@ return {
                         '%.pcd',
 
                         -- ros
-                        'build/',
+                        './build/',
                         'install/',
                         'log/',
                         'logs/',
