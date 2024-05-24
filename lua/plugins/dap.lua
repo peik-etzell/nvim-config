@@ -3,6 +3,7 @@ return {
         'rcarriga/nvim-dap-ui',
         ft = { 'c', 'cpp', 'rust', 'python', 'csharp' },
         dependencies = {
+            'nvim-neotest/nvim-nio',
             {
                 'mfussenegger/nvim-dap',
                 config = function()
