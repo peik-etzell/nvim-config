@@ -23,8 +23,6 @@ return {
                     layout_strategy = 'flex',
                     layout_config = {
                         prompt_position = 'top',
-                        mirror = true,
-                        anchor = 'N',
                         height = 0.90,
                         width = 0.95,
                         horizontal = {
@@ -69,7 +67,15 @@ return {
             local builtin = require('telescope.builtin')
 
             map('<leader>f', builtin.find_files, 'Fuzzy find files')
-            map('<leader>c', builtin.colorscheme, 'Change colorscheme')
+            map('<leader>c', function()
+                builtin.colorscheme({
+                    layout_strategy = 'cursor',
+                    layout_config = {
+                        width = 25,
+                        height = 10,
+                    },
+                })
+            end, 'Change colorscheme')
             map('<leader>g', function()
                 builtin.live_grep({ layout_strategy = 'vertical' })
             end, 'Fuzzy find in files')
