@@ -11,6 +11,8 @@ vim.filetype.add({
         eta = 'html',
         gnuplot = 'gnuplot',
         plt = 'gnuplot',
+        hlsl = 'hlsl',
+        xaml = 'xml',
     },
 })
 
