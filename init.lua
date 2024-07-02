@@ -39,6 +39,7 @@ set.sidescrolloff = 10
 set.colorcolumn = '80'
 set.ignorecase = true
 set.smartcase = true
+set.inccommand = 'split'
 
 -- folding
 set.foldmethod = 'expr'
