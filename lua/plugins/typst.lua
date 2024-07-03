@@ -41,7 +41,6 @@ return {
     },
     {
         'marnym/typst-watch.nvim',
-        -- opts = { preview_cmd = { 'xdg-open' } },
         opts = {},
         ft = 'typst',
     },
