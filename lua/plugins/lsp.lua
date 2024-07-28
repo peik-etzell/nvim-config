@@ -10,13 +10,6 @@ return {
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
             {
-                'folke/neodev.nvim',
-                opts = {},
-                config = function()
-                    require('neodev').setup({})
-                end,
-            },
-            {
                 'https://git.sr.ht/~p00f/clangd_extensions.nvim',
                 ft = { 'cpp', 'c' },
             },
