@@ -23,8 +23,8 @@ return {
                     layout_strategy = 'flex',
                     layout_config = {
                         prompt_position = 'top',
-                        height = 0.90,
-                        width = 0.95,
+                        height = .99,
+                        width = .99,
                         horizontal = {
                             preview_width = 0.5,
                         },
