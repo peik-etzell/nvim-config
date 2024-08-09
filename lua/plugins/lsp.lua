@@ -61,7 +61,6 @@ return {
                 'dockerls',
                 'docker_compose_language_service',
                 'nil_ls',
-                'tsserver',
                 'jsonls',
                 'cssls',
                 'html',
@@ -69,6 +68,7 @@ return {
                 'lemminx',
                 'eslint',
                 'asm_lsp',
+                'elmls',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
