@@ -10,7 +10,6 @@ return {
                     local dap = require('dap')
                     local adapters = dap.adapters
                     local configurations = dap.configurations
-                    local nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 
                     -- ADAPTERS
                     adapters.gdb = {
@@ -21,7 +20,7 @@ return {
 
                     adapters.lldb = {
                         type = 'executable',
-                        command = nixos
+                        command = vim.g.nixos
                                 and '/run/current-system/sw/bin/lldb-vscode'
                             or vim.fn.stdpath('data')
                                 .. '/mason/packages/codelldb/codelldb',

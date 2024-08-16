@@ -1,6 +1,6 @@
 return {
     {
-        enabled = vim.fn.filereadable('/etc/NIXOS') == 0,
+        enabled = not vim.g.nixos,
         event = 'VeryLazy',
         'williamboman/mason.nvim',
         opts = {},

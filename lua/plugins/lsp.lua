@@ -101,7 +101,7 @@ return {
                 filetypes = { 'cpp', 'c', 'cuda', 'objcpp', 'objc' },
             })
             local function omnisharp_cmd()
-                return { 'OmniSharp' }
+                return { vim.g.nixos and 'OmniSharp' or 'omnisharp' }
             end
             lspconfig.omnisharp.setup({
                 capabilities = default_capabilities,
