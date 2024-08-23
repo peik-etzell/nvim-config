@@ -18,6 +18,16 @@ return {
         config = function()
             require('telescope').setup({
                 defaults = {
+                    vimgrep_arguments = {
+                        'rg',
+                        '--color=never',
+                        '--no-heading',
+                        '--with-filename',
+                        '--line-number',
+                        '--column',
+                        '--smart-case',
+                        '--no-ignore-vcs',
+                    },
                     sorting_strategy = 'ascending',
                     scroll_strategy = 'limit',
                     layout_strategy = 'flex',
@@ -66,7 +76,17 @@ return {
 
             local builtin = require('telescope.builtin')
 
-            map('<leader>f', builtin.find_files, 'Fuzzy find files')
+            map('<leader>f', function()
+                builtin.find_files({
+                    find_command = {
+                        'rg',
+                        '--files',
+                        '--color=never',
+                        '--no-ignore-vcs',
+                    },
+                })
+                end,
+                'Fuzzy find files')
             map('<leader>c', function()
                 builtin.colorscheme({
                     layout_strategy = 'cursor',
