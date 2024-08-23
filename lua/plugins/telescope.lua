@@ -85,8 +85,7 @@ return {
                         '--no-ignore-vcs',
                     },
                 })
-                end,
-                'Fuzzy find files')
+            end, 'Fuzzy find files')
             map('<leader>c', function()
                 builtin.colorscheme({
                     layout_strategy = 'cursor',
