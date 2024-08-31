@@ -50,6 +50,7 @@ return {
                         '%.aux',
                         '%.pdf',
                         'indent.log',
+                        'node_modules/',
 
                         -- Binary files
                         '%.pcd',
