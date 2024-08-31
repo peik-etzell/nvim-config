@@ -4,6 +4,9 @@ return {
         event = 'VeryLazy',
         config = function()
             require('nvim-tree').setup({
+                notify = {
+                    threshold = vim.log.levels.WARN,
+                },
                 update_focused_file = {
                     enable = false,
                 },
