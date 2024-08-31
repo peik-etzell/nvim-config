@@ -69,6 +69,7 @@ return {
                 'eslint',
                 'asm_lsp',
                 'elmls',
+                'svelte',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
