@@ -1,11 +1,25 @@
 return {
     s({
-        dscr = 'Autosnippet to expand to multiline comment',
+        dscr = 'Multiline comment',
         trig = '///',
-        snippetType = 'autosnippet',
     }, {
         t({ '/**', ' * ' }),
         i(1),
         t({ '', ' */' }),
+    }),
+    s({
+        dscr = 'Template',
+        trig = 'helloworld',
+    }, {
+        t({
+            '#include <iostream>',
+            '',
+            'using namespace std;',
+            '',
+            'int main(int argc, char **argv) {',
+            '  cout << "Hello world!" << endl;',
+            '  return 0;',
+            '}',
+        }),
     }),
 }
