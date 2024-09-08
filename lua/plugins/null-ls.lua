@@ -46,6 +46,8 @@ return {
                     }),
                     builtins.hover.dictionary,
 
+                    builtins.formatting.typstyle,
+
                     -- C/C++ / CMake / Make
                     diagnostics.cppcheck,
                     fmt.clang_format,
