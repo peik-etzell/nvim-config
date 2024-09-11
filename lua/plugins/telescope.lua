@@ -54,6 +54,7 @@ return {
 
                         -- Binary files
                         '%.pcd',
+                        '%.out',
 
                         -- ros
                         './build/',
