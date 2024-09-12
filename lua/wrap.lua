@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
         vim.opt_local.colorcolumn = nil
         vim.opt_local.smoothscroll = true
         vim.opt_local.cursorline = false
+        vim.opt_local.signcolumn = 'number'
         for _, key in pairs({ 'j', 'k', '$', '0' }) do
             vim.keymap.set(
                 { 'n', 'v' },
