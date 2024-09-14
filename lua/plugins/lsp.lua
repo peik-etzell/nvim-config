@@ -60,7 +60,6 @@ return {
                 'cmake',
                 'dockerls',
                 'docker_compose_language_service',
-                'nil_ls',
                 'jsonls',
                 'cssls',
                 'html',
@@ -114,6 +113,17 @@ return {
                 settings = {
                     enable_autofix = false,
                     enable_build_on_save = true,
+                },
+            })
+
+            lspconfig.nil_ls.setup({
+                capabilities = default_capabilities,
+                settings = {
+                    ['nil'] = {
+                        formatting = {
+                            command = { 'nixfmt' },
+                        },
+                    },
                 },
             })
 

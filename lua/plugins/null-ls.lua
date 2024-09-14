@@ -31,7 +31,6 @@ return {
 
                     diagnostics.statix,
                     code_actions.statix,
-                    fmt.nixfmt,
 
                     code_actions.refactoring,
                     code_actions.gitsigns,
