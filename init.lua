@@ -6,15 +6,16 @@ let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 let.do_filetype_lua = 1
 vim.filetype.add({
     extension = {
+        eta = 'html',
+        gnuplot = 'gnuplot',
+        hlsl = 'hlsl',
+        plt = 'gnuplot',
         repos = 'yaml',
         rviz = 'yaml',
         scad = 'openscad',
         typ = 'typst',
-        eta = 'html',
-        gnuplot = 'gnuplot',
-        plt = 'gnuplot',
-        hlsl = 'hlsl',
         xaml = 'xml',
+        xkb = 'xkb',
     },
 })
 
