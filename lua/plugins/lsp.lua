@@ -69,6 +69,7 @@ return {
                 'asm_lsp',
                 'elmls',
                 'svelte',
+                'autotools_ls',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
