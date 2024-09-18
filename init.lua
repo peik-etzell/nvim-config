@@ -1,10 +1,12 @@
 local set = vim.opt
 local let = vim.g
 
-local here = vim.fn.fnamemodify(vim.fn.expand("<sfile>"), ":p:h")
-vim.opt.rtp:prepend(here)
-
 let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
+
+if nixos then
+    local here = vim.fn.fnamemodify(vim.fn.expand("<sfile>"), ":p:h")
+    vim.opt.rtp:prepend(here)
+end
 
 let.do_filetype_lua = 1
 vim.filetype.add({
