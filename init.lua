@@ -3,8 +3,8 @@ local let = vim.g
 
 let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 
-if nixos then
-    local here = vim.fn.fnamemodify(vim.fn.expand("<sfile>"), ":p:h")
+if vim.g.nixos then
+    local here = vim.fn.fnamemodify(vim.fn.expand('<sfile>'), ':p:h')
     vim.opt.rtp:prepend(here)
 end
 
