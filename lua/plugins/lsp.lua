@@ -135,7 +135,7 @@ return {
                     'deno.jsonc'
                 ),
             })
-            lspconfig.tsserver.setup({
+            lspconfig.ts_ls.setup({
                 capabilities = default_capabilities,
                 root_dir = lspconfig.util.root_pattern('package.json'),
                 single_file_support = false,
