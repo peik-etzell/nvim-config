@@ -6,6 +6,8 @@ let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 if vim.g.nixos then
     local here = vim.fn.fnamemodify(vim.fn.expand('<sfile>'), ':p:h')
     vim.opt.rtp:prepend(here)
+    -- vim.opt.rtp:append(here .. '/snippets')
+    -- vim.opt.rtp:append(here .. '/ftplugin')
 end
 
 let.do_filetype_lua = 1
