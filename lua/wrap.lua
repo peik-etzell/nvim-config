@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
         vim.opt_local.wrap = true
         vim.opt_local.linebreak = true
         vim.opt_local.breakindent = true
-        vim.opt_local.colorcolumn = nil
+        vim.opt_local.colorcolumn = ""
         vim.opt_local.smoothscroll = true
         vim.opt_local.cursorline = false
         vim.opt_local.signcolumn = 'number'
