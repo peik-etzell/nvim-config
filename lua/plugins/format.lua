@@ -3,7 +3,7 @@ local function deno_overwrite()
     if is_deno_project then
         return { 'deno_fmt' }
     else
-        return { { 'prettierd', 'prettier' } }
+        return { 'prettierd', 'prettier', stop_after_first = true }
     end
 end
 
