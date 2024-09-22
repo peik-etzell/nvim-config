@@ -1,14 +1,11 @@
 local set = vim.opt
 local let = vim.g
 
+let.do_filetype_lua = 1
+
 let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 
-if vim.g.nixos then
-    local here = vim.fn.fnamemodify(vim.fn.expand('<sfile>'), ':p:h')
-    vim.opt.rtp:prepend(here)
-end
 
-let.do_filetype_lua = 1
 vim.filetype.add({
     extension = {
         eta = 'html',
@@ -87,4 +84,5 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins', {
     ui = { border = vim.g.border },
     change_detection = { notify = false },
+    performance= { rtp = { reset = false, } },
 })
