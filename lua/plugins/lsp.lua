@@ -40,15 +40,15 @@ return {
                         vim.diagnostic.open_float({ border = vim.g.border })
                     end)
 
-                    set_keymap('<leader>s', function()
-                        vim.lsp.buf.format({
-                            async = true,
-                            filter = function(server)
-                                return server.name ~= 'lua_ls'
-                                    and server.name ~= 'tsserver'
-                            end,
-                        })
-                    end)
+                    -- set_keymap('<leader>s', function()
+                    --     vim.lsp.buf.format({
+                    --         async = true,
+                    --         filter = function(server)
+                    --             return server.name ~= 'lua_ls'
+                    --                 and server.name ~= 'tsserver'
+                    --         end,
+                    --     })
+                    -- end)
                 end,
             })
 

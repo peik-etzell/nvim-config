@@ -1,9 +1,9 @@
 local function deno_overwrite()
-    local is_deno_project = vim.fn.glob("deno.json") ~= ""
+    local is_deno_project = vim.fn.glob('deno.json') ~= ''
     if is_deno_project then
-        return { "deno_fmt" }
+        return { 'deno_fmt' }
     else
-        return { { "prettierd", "prettier" } }
+        return { { 'prettierd', 'prettier' } }
     end
 end
 
@@ -16,6 +16,7 @@ return {
             {
                 '<leader>s',
                 function()
+                    print('formatting')
                     require('conform').format({
                         async = true,
                         lsp_format = 'fallback',
@@ -27,7 +28,14 @@ return {
         },
         opts = {
             formatters_by_ft = {
+                buf = { 'buf' },
                 python = { 'black' },
+
+                lua = { 'stylua' },
+
+                sh = { 'shfmt' },
+
+                cmake = { 'cmake_format' },
 
                 javascript = deno_overwrite(),
                 typescript = deno_overwrite(),
@@ -36,11 +44,11 @@ return {
 
                 astro = deno_overwrite(),
                 nix = { 'nixfmt' },
-                typst = { "typstyle" },
+                typst = { 'typstyle' },
 
-                markdown = { "deno_fmt" },
-                json = { "deno_fmt" },
-                jsonc = { "deno_fmt" },
+                markdown = { 'deno_fmt' },
+                json = { 'deno_fmt' },
+                jsonc = { 'deno_fmt' },
             },
         },
     },
