@@ -16,7 +16,6 @@ return {
             {
                 '<leader>s',
                 function()
-                    print('formatting')
                     require('conform').format({
                         async = true,
                         lsp_format = 'fallback',
