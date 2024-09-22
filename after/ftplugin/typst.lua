@@ -5,3 +5,5 @@ vim.keymap.set('n', '<leader>z', function()
 end, {})
 
 vim.bo.commentstring = '// %s'
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
