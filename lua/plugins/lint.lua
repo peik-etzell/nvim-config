@@ -11,9 +11,7 @@ return {
 
             local lint = require('lint')
             lint.linters_by_ft = {
-                c = { 'clangtidy' },
                 cmake = { 'cmakelint' },
-                cpp = { 'clangtidy' },
                 make = { 'checkmake' },
                 nix = { 'statix' },
                 sh = { 'shellcheck', 'shellharden' },
