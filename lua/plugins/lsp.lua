@@ -63,6 +63,7 @@ return {
                 'jsonls',
                 'cssls',
                 'html',
+                'htmx',
                 'marksman',
                 'lemminx',
                 'eslint',
