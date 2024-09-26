@@ -15,6 +15,7 @@ return {
                 make = { 'checkmake' },
                 nix = { 'statix' },
                 sh = { 'shellcheck', 'shellharden' },
+                proto = { 'buf_lint' },
             }
 
             local eslint_d_exists = vim.fn.executable('eslint_d') == 1

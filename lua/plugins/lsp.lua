@@ -33,22 +33,8 @@ return {
                             { silent = true, buffer = event.buf }
                         )
                     end
-                    set_keymap('K', vim.lsp.buf.hover)
                     set_keymap('<C-S-k>', vim.lsp.buf.signature_help)
                     set_keymap('<leader>rn', vim.lsp.buf.rename)
-                    set_keymap('<C-k>', function()
-                        vim.diagnostic.open_float({ border = vim.g.border })
-                    end)
-
-                    -- set_keymap('<leader>s', function()
-                    --     vim.lsp.buf.format({
-                    --         async = true,
-                    --         filter = function(server)
-                    --             return server.name ~= 'lua_ls'
-                    --                 and server.name ~= 'tsserver'
-                    --         end,
-                    --     })
-                    -- end)
                 end,
             })
 

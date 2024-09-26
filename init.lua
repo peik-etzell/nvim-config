@@ -5,7 +5,6 @@ let.do_filetype_lua = 1
 
 let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 
-
 vim.filetype.add({
     extension = {
         eta = 'html',
@@ -59,6 +58,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+local function set_keymap(lhs, rhs)
+    vim.keymap.set('n', lhs, rhs, { silent = true })
+end
+set_keymap('K', vim.lsp.buf.hover)
+set_keymap('<C-k>', function()
+    vim.diagnostic.open_float({ border = vim.g.border })
+end)
+set_keymap('<leader>s', function()
+    vim.lsp.buf.format({
+        async = true,
+        filter = function(server)
+            return server.name ~= 'lua_ls' and server.name ~= 'tsserver'
+        end,
+    })
+end)
+
 set.updatetime = 300
 set.clipboard = 'unnamedplus'
 
@@ -84,5 +99,5 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins', {
     ui = { border = vim.g.border },
     change_detection = { notify = false },
-    performance= { rtp = { reset = false, } },
+    performance = { rtp = { reset = false } },
 })

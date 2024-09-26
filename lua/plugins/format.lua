@@ -27,7 +27,7 @@ return {
         },
         opts = {
             formatters_by_ft = {
-                buf = { 'buf' },
+                proto = { 'buf' },
                 python = { 'black' },
 
                 lua = { 'stylua' },
