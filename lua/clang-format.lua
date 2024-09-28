@@ -1,4 +1,4 @@
-local pattern = { '*.c', '*.cpp', '*.h', '*.hpp', '.cc', '.proto' }
+local pattern = { '*.c', '*.cpp', '*.h', '*.hpp', '.cc' }
 
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     pattern = pattern,
