@@ -8,6 +8,11 @@ return {
                 local adapters = dap.adapters
                 local configurations = dap.configurations
 
+                vim.fn.sign_define(
+                    'DapBreakpoint',
+                    { text = '🛑', texthl = '', linehl = '', numhl = '' }
+                )
+
                 -- ADAPTERS
                 adapters.gdb = {
                     type = 'executable',
