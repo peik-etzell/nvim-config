@@ -70,7 +70,7 @@ return {
                 },
             })
             pcall(require('telescope').load_extension, 'fzf')
-            pcall(require('telescope').load_extension, 'dap')
+            -- pcall(require('telescope').load_extension, 'dap')
 
             local function map(lhs, rhs, desc)
                 vim.keymap.set('n', lhs, rhs, { silent = true, desc = desc })

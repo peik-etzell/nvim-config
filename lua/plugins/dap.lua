@@ -36,6 +36,7 @@ return {
                     command = vim.fn.stdpath('data')
                         .. '/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
                 }
+
                 -- C#
                 adapters.coreclr = {
                     type = 'executable',
@@ -44,11 +45,35 @@ return {
                     args = { '--interpreter=vscode' },
                 }
 
-                local function path_to_executable()
-                    return vim.fn.input({
-                        prompt = 'Path to executable: ',
-                        default = vim.fn.getcwd() .. '/',
-                        completion = 'file',
+                local function pick_file_with_dbgsym()
+                    return require('dap.utils').pick_file({
+                        filter = function(filename)
+                            local uv = vim.uv or vim.loop
+                            local user_execute = tonumber('00100', 8)
+                            local stat = uv.fs_stat(filename)
+                            local exe = stat
+                                    and bit.band(stat.mode, user_execute) == user_execute
+                                or false
+                            if not exe then
+                                return false
+                            end
+
+                            if
+                                vim.startswith(
+                                    filename,
+                                    vim.fn.getcwd() .. '/.git'
+                                )
+                            then
+                                return false
+                            end
+
+                            local symbols = vim.fn.system(
+                                'nm -a ' .. filename .. ' | grep -i debug'
+                            )
+                            local has_dbgsyms = symbols and symbols ~= ''
+
+                            return has_dbgsyms
+                        end,
                     })
                 end
 
@@ -57,7 +82,7 @@ return {
                     name = 'LLDB',
                     type = 'lldb',
                     request = 'launch',
-                    program = path_to_executable,
+                    program = pick_file_with_dbgsym,
                     cwd = '${workspaceFolder}',
                     stopOnEntry = false,
                     args = {},
@@ -66,7 +91,7 @@ return {
                     name = 'cpptools',
                     type = 'cppdbg',
                     request = 'launch',
-                    program = path_to_executable,
+                    program = pick_file_with_dbgsym,
                     cwd = '${workspaceFolder}',
                     stopOnEntry = true,
                     setupCommands = {
@@ -85,7 +110,7 @@ return {
                     miDebuggerServerAddress = 'localhost:1234',
                     miDebuggerPath = '/usr/bin/gdb',
                     cwd = '${workspaceFolder}',
-                    program = path_to_executable,
+                    program = pick_file_with_dbgsym,
                     setupCommands = {
                         {
                             text = '-enable-pretty-printing',
@@ -98,9 +123,9 @@ return {
                     name = 'GDB',
                     type = 'gdb',
                     request = 'launch',
-                    program = path_to_executable,
+                    program = pick_file_with_dbgsym,
                     cwd = '${workspaceFolder}',
-                    stopAtBeginningOfMainSubprogram = false,
+                    stopAtBeginningOfMainSubprogram = true,
                 }
 
                 configurations.cpp = {
@@ -116,7 +141,7 @@ return {
                         type = 'coreclr',
                         name = 'Launch netcoredbg',
                         request = 'launch',
-                        program = path_to_executable,
+                        program = require('dap.utils').pick_file,
                     },
                 }
 
