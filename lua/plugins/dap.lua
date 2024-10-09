@@ -20,22 +20,22 @@ return {
                     args = { '-i', 'dap' },
                 }
 
-                adapters.lldb = {
-                    type = 'executable',
-                    command = vim.g.nixos
-                            and '/run/current-system/sw/bin/lldb-vscode'
-                        or vim.fn.stdpath('data')
-                            .. '/mason/packages/codelldb/codelldb',
-                    name = 'lldb',
-                }
+                -- adapters.lldb = {
+                --     type = 'executable',
+                --     command = vim.g.nixos
+                --             and '/run/current-system/sw/bin/lldb-vscode'
+                --         or vim.fn.stdpath('data')
+                --             .. '/mason/packages/codelldb/codelldb',
+                --     name = 'lldb',
+                -- }
 
-                adapters.cppdbg = {
-                    id = 'cppdbg',
-                    name = 'cppdbg',
-                    type = 'executable',
-                    command = vim.fn.stdpath('data')
-                        .. '/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
-                }
+                -- adapters.cppdbg = {
+                --     id = 'cppdbg',
+                --     name = 'cppdbg',
+                --     type = 'executable',
+                --     command = vim.fn.stdpath('data')
+                --         .. '/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+                -- }
 
                 -- C#
                 adapters.coreclr = {
@@ -78,30 +78,30 @@ return {
                 end
 
                 -- CONFIGURATIONS
-                local lldbConfig = {
-                    name = 'LLDB',
-                    type = 'lldb',
-                    request = 'launch',
-                    program = pick_file_with_dbgsym,
-                    cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
-                    args = {},
-                }
-                local cpptoolsConfig = {
-                    name = 'cpptools',
-                    type = 'cppdbg',
-                    request = 'launch',
-                    program = pick_file_with_dbgsym,
-                    cwd = '${workspaceFolder}',
-                    stopOnEntry = true,
-                    setupCommands = {
-                        {
-                            text = '-enable-pretty-printing',
-                            description = 'enable pretty printing',
-                            ignoreFailures = false,
-                        },
-                    },
-                }
+                -- local lldbConfig = {
+                --     name = 'LLDB',
+                --     type = 'lldb',
+                --     request = 'launch',
+                --     program = pick_file_with_dbgsym,
+                --     cwd = '${workspaceFolder}',
+                --     stopOnEntry = false,
+                --     args = {},
+                -- }
+                -- local cpptoolsConfig = {
+                --     name = 'cpptools',
+                --     type = 'cppdbg',
+                --     request = 'launch',
+                --     program = pick_file_with_dbgsym,
+                --     cwd = '${workspaceFolder}',
+                --     stopOnEntry = true,
+                --     setupCommands = {
+                --         {
+                --             text = '-enable-pretty-printing',
+                --             description = 'enable pretty printing',
+                --             ignoreFailures = false,
+                --         },
+                --     },
+                -- }
                 local gdbserverConfig = {
                     name = 'gdbserver at localhost:1234',
                     type = 'cppdbg',
@@ -129,8 +129,8 @@ return {
                 }
 
                 configurations.cpp = {
-                    lldbConfig,
-                    cpptoolsConfig,
+                    -- lldbConfig,
+                    -- cpptoolsConfig,
                     gdbConfig,
                     gdbserverConfig,
                 }
