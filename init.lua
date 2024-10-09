@@ -44,6 +44,7 @@ set.colorcolumn = '80'
 set.ignorecase = true
 set.smartcase = true
 set.inccommand = 'split'
+set.signcolumn = 'yes:1'
 
 -- folding
 set.foldmethod = 'expr'
