@@ -5,10 +5,14 @@ local pattern = { '*.md', '*.tex', '*.txt', '*.typ' }
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     pattern = pattern,
     callback = function(_)
+        if vim.fn.expand('%:t') == 'CMakeLists.txt' then
+            return
+        end
+
         vim.opt_local.wrap = true
         vim.opt_local.linebreak = true
         vim.opt_local.breakindent = true
-        vim.opt_local.colorcolumn = ""
+        vim.opt_local.colorcolumn = ''
         vim.opt_local.smoothscroll = true
         vim.opt_local.cursorline = false
         vim.opt_local.signcolumn = 'number'
