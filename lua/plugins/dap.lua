@@ -58,11 +58,14 @@ return {
                                 return false
                             end
 
+                            local relpath = string.sub(
+                                filename,
+                                string.len(vim.fn.getcwd()) + 2
+                            )
+
                             if
-                                vim.startswith(
-                                    filename,
-                                    vim.fn.getcwd() .. '/.git'
-                                )
+                                vim.startswith(relpath, '.git')
+                                or vim.startswith(relpath, '.direnv')
                             then
                                 return false
                             end
