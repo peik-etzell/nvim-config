@@ -51,6 +51,7 @@ return {
                         '%.pdf',
                         'indent.log',
                         'node_modules/',
+                        'flake.lock',
 
                         -- Binary files
                         '%.pcd',
