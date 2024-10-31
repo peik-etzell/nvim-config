@@ -37,7 +37,7 @@ return {
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
-        enabled = true,
+        enabled = false,
         event = 'VeryLazy',
         config = function()
             require('treesitter-context').setup({
