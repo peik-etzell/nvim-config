@@ -51,7 +51,6 @@
   "telescope-dap.nvim": { "branch": "master", "commit": "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
-  "typst-watch.nvim": { "branch": "main", "commit": "7b036b272a1c2c9700a3e811102df9c8554fc2e9" },
   "vim-just": { "branch": "main", "commit": "639f9cb02183d1bdf17f13a4045320f007c35020" },
   "vim-kitty": { "branch": "main", "commit": "9cc594a634308aa3bfaf3da5b5e741da1c0144c1" },
   "vim-paper": { "branch": "main", "commit": "01b79707c2144f9c845057da2e7d6ec024e15c76" },

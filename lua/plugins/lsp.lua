@@ -39,7 +39,7 @@ return {
             })
 
             local servers = {
-                'typst_lsp',
+                -- 'typst_lsp',
                 'pyright',
                 'texlab',
                 'openscad_lsp',
@@ -126,6 +126,10 @@ return {
                 capabilities = default_capabilities,
                 root_dir = lspconfig.util.root_pattern('package.json'),
                 single_file_support = false,
+            })
+            lspconfig.tinymist.setup({
+                capabilities = default_capabilities,
+                single_file_support = true,
             })
         end,
     },
