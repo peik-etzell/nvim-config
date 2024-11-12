@@ -36,9 +36,7 @@ vim.api.nvim_create_user_command('TypstWatch', function(opts)
     typst_watch(file)
 end, { nargs = '?', complete = 'file' })
 
-vim.api.nvim_create_user_command('TypstStop', function()
-    typst_stop()
-end, {})
+vim.api.nvim_create_user_command('TypstStop', typst_stop, {})
 
 vim.bo.commentstring = '// %s'
 vim.bo.tabstop = 2
