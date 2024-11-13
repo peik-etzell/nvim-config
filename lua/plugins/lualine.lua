@@ -32,7 +32,7 @@ return {
                     },
                 },
                 sections = {
-                    lualine_a = { 'mode' },
+                    lualine_a = {},
                     lualine_b = { 'branch' },
                     lualine_c = { 'diff' },
                     lualine_x = { 'filetype' },
