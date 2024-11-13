@@ -43,6 +43,8 @@ return {
                     { name = 'path' },
                     { name = 'nvim_lsp_signature_help' },
                     -- { name = "cmdline" },
+                }, {
+                    { name = 'buffer' },
                 }),
                 sorting = {
                     comparators = {
