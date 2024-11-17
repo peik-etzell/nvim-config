@@ -57,6 +57,7 @@ return {
                 'elmls',
                 'svelte',
                 'autotools_ls',
+                'superhtml',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
