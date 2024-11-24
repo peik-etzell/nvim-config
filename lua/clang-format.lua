@@ -1,7 +1,5 @@
-local pattern = { '*.c', '*.cpp', '*.h', '*.hpp', '.cc' }
-
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-    pattern = pattern,
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'c', 'cpp', 'cuda' },
     callback = function(_)
         local indent_handle = io.popen(
             "clang-format -dump-config | grep ^IndentWidth: | awk '{print $2}'"
