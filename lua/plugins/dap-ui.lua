@@ -31,6 +31,7 @@ return {
         },
         config = function()
             local dapui = require('dapui')
+            ---@diagnostic disable-next-line: missing-fields
             dapui.setup({
                 icons = {
                     expanded = '▾',
@@ -83,6 +84,7 @@ return {
                     },
                 },
                 windows = { indent = 1 },
+                ---@diagnostic disable-next-line: missing-fields
                 render = {
                     max_type_length = nil, -- Can be integer or nil.
                     max_value_lines = 100, -- Can be integer or nil.
