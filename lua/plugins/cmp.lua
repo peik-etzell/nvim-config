@@ -27,12 +27,12 @@ return {
                         select = true,
                     }),
                     ['<C-l>'] = cmp.mapping(function()
-                        if luasnip.jumpable(1) then
+                        if luasnip.locally_jumpable(1) then
                             luasnip.jump(1)
                         end
                     end, { 'i', 's' }),
                     ['<C-h>'] = cmp.mapping(function()
-                        if luasnip.jumpable(-1) then
+                        if luasnip.locally_jumpable(-1) then
                             luasnip.jump(-1)
                         end
                     end, { 'i', 's' }),
