@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         if indent_handle then
             local indent_width = tonumber(indent_handle:read('*a'))
             indent_handle:close()
-            vim.opt_local.tabstop = indent_width
+            vim.opt_local.softtabstop = indent_width
             vim.opt_local.shiftwidth = indent_width
         end
 

@@ -29,9 +29,11 @@ let.border = nil
 -- set.mouse = nil
 set.number = true
 set.relativenumber = false
-set.tabstop = 4
+
+set.softtabstop = 4
 set.shiftwidth = 4
 set.expandtab = true
+
 set.timeoutlen = 500
 set.undofile = true
 set.wrap = false

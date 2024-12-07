@@ -39,5 +39,5 @@ end, { nargs = '?', complete = 'file' })
 vim.api.nvim_create_user_command('TypstStop', typst_stop, {})
 
 vim.bo.commentstring = '// %s'
-vim.bo.tabstop = 2
+vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
