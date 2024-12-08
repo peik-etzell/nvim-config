@@ -2,8 +2,8 @@ return {
     {
         'scalameta/nvim-metals',
         dependencies = {
+            'saghen/blink.cmp',
             'nvim-lua/plenary.nvim',
-            'hrsh7th/cmp-nvim-lsp',
         },
         ft = 'scala',
         lazy = true,
@@ -11,7 +11,7 @@ return {
             local metals = require('metals')
             local config = metals.bare_config()
             config.settings = {}
-            config.capabilities = require('cmp_nvim_lsp').default_capabilities()
+            config.capabilities = require('blink.cmp').get_lsp_capabilities()
             config.on_attach = function()
                 metals.setup_dap()
             end
