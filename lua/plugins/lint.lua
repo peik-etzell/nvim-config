@@ -4,9 +4,7 @@ return {
         event = 'BufEnter',
         config = function()
             vim.diagnostic.config({
-                float = {
-                    source = true,
-                },
+                float = { source = true },
             })
 
             local lint = require('lint')
@@ -33,7 +31,7 @@ return {
 
                     -- todo: check filetype
                     if root_has('deno.json') then
-                        lint.try_lint('deno')
+                        -- lint.try_lint('deno')
                     elseif root_has('.eslintrc*') and eslint_d_exists then
                         lint.try_lint('eslint_d')
                     elseif root_has('.eslintrc*') and not eslint_d_exists then

@@ -48,7 +48,7 @@ return {
                 'jsonls',
                 'cssls',
                 'html',
-                'htmx',
+                -- 'htmx',
                 'marksman',
                 'lemminx',
                 'eslint',
