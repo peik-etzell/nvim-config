@@ -57,6 +57,7 @@ return {
                 'svelte',
                 'autotools_ls',
                 'superhtml',
+                'postgres_lsp',
             }
             local lspconfig = require('lspconfig')
             local default_capabilities =
