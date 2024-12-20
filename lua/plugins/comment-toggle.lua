@@ -1,6 +1,7 @@
 return {
     {
         'terrortylor/nvim-comment',
+        event = 'VeryLazy',
         config = function()
             require('nvim_comment').setup()
             vim.keymap.set(
@@ -10,6 +11,5 @@ return {
                 { silent = true }
             )
         end,
-        keys = { '<leader>/' },
     },
 }
