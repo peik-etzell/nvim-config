@@ -1,9 +1,3 @@
-vim.keymap.set('n', '<leader>z', function()
-    vim.fn.system(
-        string.format('zathura --fork %s.pdf &', vim.fn.expand('%:p:r'))
-    )
-end, {})
-
 local function typst_stop()
     if vim.g.typst_watching then
         vim.fn.jobstop(vim.g.typst_watching_job_id)
@@ -30,6 +24,14 @@ if not vim.g.typst_watching then
         typst_watch(main)
     end
 end
+
+vim.keymap.set('n', '<leader>z', function()
+    local current_file_base = vim.fn.expand('%:p:r')
+    if not vim.g.typst_watching then
+        typst_watch(string.format('%s.typ', current_file_base))
+    end
+    vim.fn.system(string.format('zathura --fork %s.pdf &', current_file_base))
+end, {})
 
 vim.api.nvim_create_user_command('TypstWatch', function(opts)
     local file = opts.fargs[1] or vim.fn.expand('%:p')
