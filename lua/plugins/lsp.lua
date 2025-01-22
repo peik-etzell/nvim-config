@@ -136,7 +136,9 @@ return {
                 capabilities = default_capabilities,
                 settings = {
                     ['harper-ls'] = {
-                        -- userDictPath = '~/dict.txt',
+                        isolateEnglish = true,
+                        userDictPath = vim.fn.stdpath('config')
+                            .. '/spell/en.utf-8.add',
                     },
                 },
             })
