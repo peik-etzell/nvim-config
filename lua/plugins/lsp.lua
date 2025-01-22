@@ -132,6 +132,14 @@ return {
                 capabilities = default_capabilities,
                 single_file_support = true,
             })
+            lspconfig.harper_ls.setup({
+                capabilities = default_capabilities,
+                settings = {
+                    ['harper-ls'] = {
+                        -- userDictPath = '~/dict.txt',
+                    },
+                },
+            })
         end,
     },
 }
