@@ -71,7 +71,7 @@ return {
                             end
 
                             local symbols = vim.fn.system(
-                                'nm -a ' .. filename .. ' | grep -i debug'
+                                'file ' .. filename .. ' | grep debug_info'
                             )
                             local has_dbgsyms = symbols and symbols ~= ''
 
