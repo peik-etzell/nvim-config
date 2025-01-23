@@ -1,9 +1,13 @@
--- Use wrap on files
-local pattern = { '*.md', '*.tex', '*.txt', '*.typ' }
-
 -- Turn on wrap and modify movement binds when entering a prose-based file
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-    pattern = pattern,
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = {
+        'text',
+        'markdown',
+        'tex',
+        'latex',
+        'typst',
+        -- 'dap-repl',
+    },
     callback = function(_)
         if vim.fn.expand('%:t') == 'CMakeLists.txt' then
             return

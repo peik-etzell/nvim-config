@@ -1,9 +1,20 @@
+local function is_dap_buffer()
+    return require('cmp_dap').is_dap_buffer()
+end
+
 return {
+    {
+        'saghen/blink.compat',
+        version = '*',
+        lazy = true,
+        opts = {},
+    },
     {
         'saghen/blink.cmp',
         lazy = false, -- lazy loading handled internally
         dependencies = {
             'rafamadriz/friendly-snippets',
+            'rcarriga/cmp-dap',
             {
                 'L3MON4D3/LuaSnip',
                 build = (not jit.os:find('Windows'))
@@ -56,7 +67,22 @@ return {
             -- default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, via `opts_extend`
 
-            sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+            enabled = function()
+                return vim.bo.buftype ~= 'prompt' or is_dap_buffer()
+            end,
+            sources = {
+                -- https://github.com/Saghen/blink.compat/issues/23#issuecomment-2563890260
+                default = function(_)
+                    if is_dap_buffer() then
+                        return { 'dap', 'snippets', 'buffer' }
+                    else
+                        return { 'lsp', 'path', 'snippets', 'buffer' }
+                    end
+                end,
+                providers = {
+                    dap = { name = 'dap', module = 'blink.compat.source' },
+                },
+            },
 
             completion = {
                 accept = { auto_brackets = { enabled = true } },
@@ -66,8 +92,5 @@ return {
 
             signature = { enabled = true },
         },
-        -- allows extending the enabled_providers array elsewhere in your config
-        -- without having to redefine it
-        opts_extend = { 'sources.completion.enabled_providers' },
     },
 }
