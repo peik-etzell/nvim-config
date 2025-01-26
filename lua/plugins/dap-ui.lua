@@ -93,6 +93,13 @@ return {
             vim.keymap.set({ 'n' }, '<F4>', function()
                 dapui.toggle()
             end, { silent = true })
+
+            vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
+                pattern = { '[dap-repl-*' },
+                callback = function()
+                    vim.cmd.startinsert()
+                end,
+            })
         end,
     },
 }
