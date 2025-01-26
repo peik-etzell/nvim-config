@@ -1,3 +1,46 @@
+local function which(cmd)
+    local handle = io.popen('which ' .. cmd)
+    if handle then
+        local path = handle:read('*a')
+        handle:close()
+        return path:gsub('%s+', '') -- delete whitespace
+    else
+        return nil
+    end
+end
+
+local function pick_file_with_dbgsym()
+    return require('dap.utils').pick_file({
+        filter = function(filename)
+            local uv = vim.uv or vim.loop
+            local user_execute = tonumber('00100', 8)
+            local stat = uv.fs_stat(filename)
+            local exe = stat
+                    and bit.band(stat.mode, user_execute) == user_execute
+                or false
+            if not exe then
+                return false
+            end
+
+            local relpath =
+                string.sub(filename, string.len(vim.fn.getcwd()) + 2)
+
+            if
+                vim.startswith(relpath, '.git')
+                or vim.startswith(relpath, '.direnv')
+            then
+                return false
+            end
+
+            local symbols =
+                vim.fn.system('file ' .. filename .. ' | grep debug_info')
+            local has_dbgsyms = symbols and symbols ~= ''
+
+            return has_dbgsyms
+        end,
+    })
+end
+
 return {
     {
         {
@@ -20,14 +63,13 @@ return {
                     args = { '-i', 'dap' },
                 }
 
-                -- adapters.lldb = {
-                --     type = 'executable',
-                --     command = vim.g.nixos
-                --             and '/run/current-system/sw/bin/lldb-vscode'
-                --         or vim.fn.stdpath('data')
-                --             .. '/mason/packages/codelldb/codelldb',
-                --     name = 'lldb',
-                -- }
+                adapters.lldb = {
+                    type = 'executable',
+                    command = vim.g.nixos and which('lldb') or vim.fn.stdpath(
+                        'data'
+                    ) .. '/mason/packages/codelldb/codelldb',
+                    name = 'lldb',
+                }
 
                 -- adapters.cppdbg = {
                 --     id = 'cppdbg',
@@ -45,51 +87,16 @@ return {
                     args = { '--interpreter=vscode' },
                 }
 
-                local function pick_file_with_dbgsym()
-                    return require('dap.utils').pick_file({
-                        filter = function(filename)
-                            local uv = vim.uv or vim.loop
-                            local user_execute = tonumber('00100', 8)
-                            local stat = uv.fs_stat(filename)
-                            local exe = stat
-                                    and bit.band(stat.mode, user_execute) == user_execute
-                                or false
-                            if not exe then
-                                return false
-                            end
-
-                            local relpath = string.sub(
-                                filename,
-                                string.len(vim.fn.getcwd()) + 2
-                            )
-
-                            if
-                                vim.startswith(relpath, '.git')
-                                or vim.startswith(relpath, '.direnv')
-                            then
-                                return false
-                            end
-
-                            local symbols = vim.fn.system(
-                                'file ' .. filename .. ' | grep debug_info'
-                            )
-                            local has_dbgsyms = symbols and symbols ~= ''
-
-                            return has_dbgsyms
-                        end,
-                    })
-                end
-
                 -- CONFIGURATIONS
-                -- local lldbConfig = {
-                --     name = 'LLDB',
-                --     type = 'lldb',
-                --     request = 'launch',
-                --     program = pick_file_with_dbgsym,
-                --     cwd = '${workspaceFolder}',
-                --     stopOnEntry = false,
-                --     args = {},
-                -- }
+                local lldbConfig = {
+                    name = 'LLDB',
+                    type = 'lldb',
+                    request = 'launch',
+                    program = pick_file_with_dbgsym,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = true,
+                    args = {},
+                }
                 -- local cpptoolsConfig = {
                 --     name = 'cpptools',
                 --     type = 'cppdbg',
