@@ -16,10 +16,22 @@ return {
                     disabled_filetypes = {
                         statusline = {
                             'NvimTree',
+                            'dap-repl',
+                            'dapui_console',
+                            'dapui_scopes',
+                            'dapui_breakpoints',
+                            'dapui_stacks',
+                            'dapui_watches',
                         },
                         winbar = {
                             'NvimTree',
                             'toggleterm',
+                            'dap-repl',
+                            'dapui_console',
+                            'dapui_scopes',
+                            'dapui_breakpoints',
+                            'dapui_stacks',
+                            'dapui_watches',
                         },
                     },
                     ignore_focus = {},
