@@ -28,7 +28,7 @@ if not vim.g.typst_watching then
     end
 end
 
-vim.keymap.set('n', '<leader>z', function()
+local function typst_preview()
     local current_file_base = vim.fn.expand('%:p:r')
     typst_watch(current_file_base .. '.typ')
     local pdf = current_file_base .. '.pdf'
@@ -42,7 +42,9 @@ vim.keymap.set('n', '<leader>z', function()
     if zathura_id > 0 then
         vim.g.zathura_id = zathura_id
     end
-end, {})
+end
+
+vim.keymap.set('n', '<leader>z', typst_preview, {})
 
 vim.api.nvim_create_user_command('TypstWatch', function(opts)
     local file = opts.fargs[1] or vim.fn.expand('%:p')
@@ -50,6 +52,7 @@ vim.api.nvim_create_user_command('TypstWatch', function(opts)
 end, { nargs = '?', complete = 'file' })
 
 vim.api.nvim_create_user_command('TypstStop', typst_stop, {})
+vim.api.nvim_create_user_command('TypstPreview', typst_preview, {})
 
 vim.bo.commentstring = '// %s'
 vim.bo.softtabstop = 2
