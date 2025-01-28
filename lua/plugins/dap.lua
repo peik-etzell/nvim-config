@@ -1,5 +1,5 @@
 local function which(cmd)
-    local handle = io.popen('which ' .. cmd)
+    local handle = io.popen('which ' .. cmd .. ' 2> /dev/null')
     if handle then
         local path = handle:read('*a')
         handle:close()
