@@ -94,10 +94,16 @@ return {
                 dapui.toggle()
             end, { silent = true })
 
-            vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
+            vim.api.nvim_create_autocmd({ 'BufEnter' }, {
                 pattern = { '[dap-repl-*' },
                 callback = function()
                     vim.cmd.startinsert()
+                end,
+            })
+            vim.api.nvim_create_autocmd({ 'BufLeave' }, {
+                pattern = { '[dap-repl-*' },
+                callback = function()
+                    vim.cmd.stopinsert()
                 end,
             })
         end,
