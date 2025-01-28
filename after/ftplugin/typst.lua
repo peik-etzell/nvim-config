@@ -30,9 +30,15 @@ end
 
 vim.keymap.set('n', '<leader>z', function()
     local current_file_base = vim.fn.expand('%:p:r')
-    typst_watch(string.format('%s.typ', current_file_base))
-    local zathura_id =
-        vim.fn.jobstart({ 'zathura', (current_file_base .. '.pdf') })
+    typst_watch(current_file_base .. '.typ')
+    local pdf = current_file_base .. '.pdf'
+    local zathura_id = vim.fn.jobstart(
+        string.format(
+            'while [ ! -f "%s" ]; do sleep 1; done; zathura %s',
+            pdf,
+            pdf
+        )
+    )
     if zathura_id > 0 then
         vim.g.zathura_id = zathura_id
     end
