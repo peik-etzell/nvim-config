@@ -1,11 +1,12 @@
-local modes = {'n', 't'}
+local modes = { 'i', 'n', 't' }
 local opts = { silent = true }
 local function set_keymap(lhs, rhs)
-   vim.keymap.set(modes, lhs, rhs, opts)
+    vim.keymap.set(modes, lhs, rhs, opts)
 end
 
 local function move(key)
     return function()
+        vim.cmd.stopinsert()
         vim.cmd.wincmd(key)
     end
 end
