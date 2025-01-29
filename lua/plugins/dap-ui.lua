@@ -90,7 +90,7 @@ return {
                     max_value_lines = 100, -- Can be integer or nil.
                 },
             })
-            vim.keymap.set({ 'n' }, '<F4>', function()
+            vim.keymap.set({ 'i', 'n' }, '<F4>', function()
                 dapui.toggle()
             end, { silent = true })
 
