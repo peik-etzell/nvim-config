@@ -1,7 +1,7 @@
 return {
     {
         'rcarriga/nvim-dap-ui',
-        ft = { 'c', 'cpp', 'rust', 'python', 'csharp' },
+        ft = { 'c', 'cpp', 'rust', 'python', 'csharp', 'zig' },
         lazy = true,
         dependencies = {
             'nvim-neotest/nvim-nio',

@@ -28,6 +28,7 @@ local function pick_file_with_dbgsym()
             if
                 vim.startswith(relpath, '.git')
                 or vim.startswith(relpath, '.direnv')
+                or vim.startswith(relpath, '.zig-cache')
             then
                 return false
             end
@@ -63,21 +64,18 @@ return {
                     args = { '-i', 'dap' },
                 }
 
-                adapters.lldb = {
-                    type = 'executable',
-                    command = vim.g.nixos and which('lldb') or vim.fn.stdpath(
-                        'data'
-                    ) .. '/mason/packages/codelldb/codelldb',
-                    name = 'lldb',
-                }
+                adapters.codelldb = {
+                    name = 'codelldb',
+                    type = 'server',
+                    port = '${port}',
+                    executable = {
+                        command = 'codelldb', -- or if not in $PATH: "/absolute/path/to/codelldb"
+                        args = { '--port', '${port}' },
 
-                -- adapters.cppdbg = {
-                --     id = 'cppdbg',
-                --     name = 'cppdbg',
-                --     type = 'executable',
-                --     command = vim.fn.stdpath('data')
-                --         .. '/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
-                -- }
+                        -- On windows you may have to uncomment this:
+                        -- detached = false,
+                    },
+                }
 
                 -- C#
                 adapters.coreclr = {
@@ -88,31 +86,16 @@ return {
                 }
 
                 -- CONFIGURATIONS
-                local lldbConfig = {
+                local lldb_config = {
                     name = 'LLDB',
-                    type = 'lldb',
+                    type = 'codelldb',
                     request = 'launch',
                     program = pick_file_with_dbgsym,
                     cwd = '${workspaceFolder}',
-                    stopOnEntry = true,
-                    args = {},
+                    stopOnEntry = false,
                 }
-                -- local cpptoolsConfig = {
-                --     name = 'cpptools',
-                --     type = 'cppdbg',
-                --     request = 'launch',
-                --     program = pick_file_with_dbgsym,
-                --     cwd = '${workspaceFolder}',
-                --     stopOnEntry = true,
-                --     setupCommands = {
-                --         {
-                --             text = '-enable-pretty-printing',
-                --             description = 'enable pretty printing',
-                --             ignoreFailures = false,
-                --         },
-                --     },
-                -- }
-                local gdbserverConfig = {
+
+                local gdbserver_config = {
                     name = 'gdbserver at localhost:1234',
                     type = 'cppdbg',
                     request = 'launch',
@@ -129,7 +112,7 @@ return {
                         },
                     },
                 }
-                local gdbConfig = {
+                local gdb_config = {
                     name = 'GDB',
                     type = 'gdb',
                     request = 'launch',
@@ -139,13 +122,12 @@ return {
                 }
 
                 configurations.cpp = {
-                    -- lldbConfig,
-                    -- cpptoolsConfig,
-                    gdbConfig,
-                    gdbserverConfig,
+                    gdb_config,
+                    gdbserver_config,
                 }
                 configurations.c = configurations.cpp
                 configurations.rust = configurations.cpp
+                configurations.zig = { lldb_config }
                 configurations.cs = {
                     {
                         type = 'coreclr',
