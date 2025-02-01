@@ -61,7 +61,13 @@ return {
                 adapters.gdb = {
                     type = 'executable',
                     command = 'gdb',
-                    args = { '-i', 'dap' },
+                    args = {
+                        '--interpreter=dap',
+                        '--eval-command',
+                        'set print pretty on',
+                        '--eval-command',
+                        'set print array on',
+                    },
                 }
 
                 adapters.codelldb = {
