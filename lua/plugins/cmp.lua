@@ -11,7 +11,7 @@ return {
     },
     {
         'saghen/blink.cmp',
-        lazy = false, -- lazy loading handled internally
+        lazy = false, -- Lazy loading handled internally
         dependencies = {
             'rafamadriz/friendly-snippets',
             'rcarriga/cmp-dap',
@@ -31,7 +31,7 @@ return {
             },
         },
 
-        -- use a release tag to download pre-built binaries
+        -- Use a release tag to download pre-built binaries
         version = 'v0.*',
 
         ---@module 'blink.cmp'
@@ -39,9 +39,30 @@ return {
         opts = {
             keymap = {
                 preset = 'super-tab',
-                ['<Tab>'] = { 'select_and_accept', 'fallback' },
+                ['<Tab>'] = {
+                    'select_and_accept',
+                    function(cmp)
+                        if vim.bo.filetype == 'dap-repl' then
+                            cmp.show()
+                            return true
+                        else
+                            return false
+                        end
+                    end,
+                    'fallback',
+                },
                 ['<C-l>'] = { 'snippet_forward' },
                 ['<C-h>'] = { 'snippet_backward' },
+
+                cmdline = {
+                    preset = 'super-tab',
+                    ['<Tab>'] = {
+                        'select_and_accept',
+                        function(cmp)
+                            cmp.show()
+                        end,
+                    },
+                },
             },
 
             appearance = {
@@ -88,6 +109,12 @@ return {
                 accept = { auto_brackets = { enabled = true } },
                 menu = { draw = { treesitter = { 'lsp' } } },
                 -- ghost_text = { enabled = true },
+                list = {
+                    cycle = {
+                        from_bottom = false,
+                        from_top = false,
+                    },
+                },
             },
 
             signature = { enabled = true },
