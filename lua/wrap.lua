@@ -28,5 +28,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
                 { silent = true, buffer = true }
             )
         end
+
+        vim.keymap.set('n', '<leader>w', 'gqq', { silent = true })
+        vim.keymap.set('v', '<leader>w', 'gq', { silent = true })
     end,
 })
