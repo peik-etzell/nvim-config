@@ -132,16 +132,16 @@ return {
                 capabilities = default_capabilities,
                 single_file_support = true,
             })
-            lspconfig.harper_ls.setup({
-                capabilities = default_capabilities,
-                settings = {
-                    ['harper-ls'] = {
-                        isolateEnglish = true,
-                        userDictPath = vim.fn.stdpath('config')
-                            .. '/spell/en.utf-8.add',
-                    },
-                },
-            })
+            -- lspconfig.harper_ls.setup({
+            --     capabilities = default_capabilities,
+            --     settings = {
+            --         ['harper-ls'] = {
+            --             isolateEnglish = true,
+            --             userDictPath = vim.fn.stdpath('config')
+            --                 .. '/spell/en.utf-8.add',
+            --         },
+            --     },
+            -- })
         end,
     },
 }
