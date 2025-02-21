@@ -64,7 +64,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local function set_keymap(lhs, rhs)
     vim.keymap.set('n', lhs, rhs, { silent = true })
 end
-set_keymap('K', vim.lsp.buf.hover)
+set_keymap('K', function()
+    if require('dap').status() ~= '' then
+        require('dapui').eval()
+    else
+        vim.lsp.buf.hover()
+    end
+end)
 set_keymap('<C-k>', function()
     vim.diagnostic.open_float({ border = vim.g.border })
 end)

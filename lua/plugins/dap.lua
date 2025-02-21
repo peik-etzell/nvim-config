@@ -1,14 +1,3 @@
-local function which(cmd)
-    local handle = io.popen('which ' .. cmd .. ' 2> /dev/null')
-    if handle then
-        local path = handle:read('*a')
-        handle:close()
-        return path:gsub('%s+', '') -- delete whitespace
-    else
-        return nil
-    end
-end
-
 local function pick_file_with_dbgsym()
     return require('dap.utils').pick_file({
         filter = function(filename)
