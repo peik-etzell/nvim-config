@@ -23,9 +23,6 @@ return {
                 },
                 config = function()
                     require('nvim-dap-repl-highlights').setup()
-                    require('nvim-treesitter.configs').setup({
-                        ensure_installed = { 'dap_repl' },
-                    })
                 end,
             },
         },
@@ -56,23 +53,9 @@ return {
                 -- Layouts are opened in order so that earlier layouts take priority in window sizing.
                 layouts = {
                     {
-                        elements = {
-                            -- Elements can be strings or table with id and size keys.
-                            { id = 'scopes', size = 0.25 },
-                            'breakpoints',
-                            'stacks',
-                            'watches',
-                        },
-                        size = 40, -- 40 columns
-                        position = 'left',
-                    },
-                    {
-                        elements = {
-                            'repl',
-                            'console',
-                        },
-                        size = 0.25, -- 25% of total lines
-                        position = 'bottom',
+                        elements = { 'repl' },
+                        size = 0.45,
+                        position = 'right',
                     },
                 },
                 floating = {
