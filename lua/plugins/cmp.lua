@@ -53,8 +53,9 @@ return {
                 },
                 ['<C-l>'] = { 'snippet_forward' },
                 ['<C-h>'] = { 'snippet_backward' },
-
-                cmdline = {
+            },
+            cmdline = {
+                keymap = {
                     preset = 'super-tab',
                     ['<Tab>'] = {
                         'select_and_accept',
@@ -93,7 +94,7 @@ return {
             end,
             sources = {
                 -- https://github.com/Saghen/blink.compat/issues/23#issuecomment-2563890260
-                default = function(_)
+                default = function()
                     if is_dap_buffer() then
                         return { 'dap', 'snippets', 'buffer' }
                     else
