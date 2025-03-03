@@ -61,9 +61,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+vim.keymap.set({ 'n', 'i', 't' }, '<D-Space>', '', {})
+
 local function set_keymap(lhs, rhs)
     vim.keymap.set('n', lhs, rhs, { silent = true })
 end
+
 set_keymap('K', function()
     if require('dap').status() ~= '' then
         require('dapui').eval()
