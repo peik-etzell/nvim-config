@@ -42,6 +42,24 @@ return {
                     })
                 end,
             })
+
+            vim.api.nvim_create_autocmd('BufEnter', {
+                desc = 'Format bm40 keymap',
+                group = group,
+                pattern = '*bm40hsrgb/rev2/keymaps/*/keymap.c',
+                callback = function()
+                    print('Qmk init for bm40')
+                    qmk.setup({
+                        name = 'LAYOUT_ortho_4x12_1x2uC',
+                        layout = {
+                            'x x x x x x x x x x x x',
+                            'x x x x x x x x x x x x',
+                            'x x x x x x x x x x x x',
+                            'x x x x x x^x x x x x x',
+                        },
+                    })
+                end,
+            })
         end,
     },
 }
