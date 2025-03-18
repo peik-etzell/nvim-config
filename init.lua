@@ -64,6 +64,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set({ 'n', 'i', 't' }, '<D-Space>', '', {})
 vim.keymap.set('n', '<BS>', '', {})
 vim.keymap.set({ 'n', 'v' }, ' ', '', {})
+vim.keymap.set({ 'n', 'v' }, '<CR>', '', {})
 
 local function set_keymap(lhs, rhs)
     vim.keymap.set('n', lhs, rhs, { silent = true })
