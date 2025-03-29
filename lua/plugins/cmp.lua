@@ -5,7 +5,7 @@ end
 return {
     {
         'saghen/blink.compat',
-        version = '*',
+        version = '1.*',
         lazy = true,
         opts = {},
     },
@@ -32,7 +32,7 @@ return {
         },
 
         -- Use a release tag to download pre-built binaries
-        version = 'v0.*',
+        version = '1.*',
 
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
