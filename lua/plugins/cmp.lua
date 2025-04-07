@@ -55,6 +55,7 @@ return {
                 ['<C-h>'] = { 'snippet_backward' },
             },
             cmdline = {
+                enabled = false,
                 keymap = {
                     preset = 'super-tab',
                     ['<Tab>'] = {
