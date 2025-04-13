@@ -96,7 +96,7 @@ require('window-management')
 require('wrap')
 require('fix_comment_strings')
 require('terminal')
-require('termdebug')
+-- require('termdebug')
 require('clang-format')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
