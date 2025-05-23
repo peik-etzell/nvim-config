@@ -57,3 +57,6 @@ vim.api.nvim_create_user_command('TypstPreview', typst_preview, {})
 vim.bo.commentstring = '// %s'
 vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
+
+vim.o.spell = true
+vim.bo.spelllang = "en_uk"
