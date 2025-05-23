@@ -56,6 +56,8 @@ return {
                         'set print pretty on',
                         '--eval-command',
                         'set print array on',
+                        '--eval-command',
+                        'set print address off',
                     },
                 }
 
