@@ -60,3 +60,4 @@ vim.bo.shiftwidth = 2
 
 vim.o.spell = true
 vim.bo.spelllang = 'en_gb'
+vim.bo.spellfile = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
