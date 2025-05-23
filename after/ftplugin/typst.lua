@@ -59,4 +59,4 @@ vim.bo.softtabstop = 2
 vim.bo.shiftwidth = 2
 
 vim.o.spell = true
-vim.bo.spelllang = "en_uk"
+vim.bo.spelllang = 'en_gb'
