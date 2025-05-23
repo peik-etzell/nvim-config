@@ -15,7 +15,7 @@ return {
             },
         },
         config = function()
-            vim.diagnostic.config({ virtual_text = false })
+            vim.diagnostic.config({ virtual_text = false, severity_sort = true })
             vim.lsp.handlers['textDocument/hover'] =
                 vim.lsp.with(vim.lsp.handlers.hover, {
                     border = vim.g.border,
