@@ -82,11 +82,7 @@ return {
                 filetypes = { 'sh', 'zsh', 'bash' },
             })
             lspconfig.clangd.setup({
-                capabilities = vim.tbl_extend(
-                    'force',
-                    default_capabilities,
-                    { offsetEncoding = 'utf-8' }
-                ),
+                capabilities = default_capabilities,
                 filetypes = { 'cpp', 'c', 'cuda', 'objcpp', 'objc' },
             })
             local function omnisharp_cmd()
