@@ -18,7 +18,7 @@ return {
     { 'yorickpeterse/vim-paper' },
     { 'ellisonleao/gruvbox.nvim' },
     { 'catppuccin/nvim' },
-    { 'nvim-tree/nvim-web-devicons', opts = { color_icons = true } },
+    { 'nvim-tree/nvim-web-devicons' },
     { 'lewis6991/gitsigns.nvim', opts = {} },
     {
         'peik-etzell/persist-theme.nvim',
