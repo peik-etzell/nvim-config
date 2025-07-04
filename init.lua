@@ -27,6 +27,7 @@ let.maplocalleader = ','
 let.border = nil
 
 -- set.mouse = nil
+set.mouse = 'nv'
 set.number = true
 set.relativenumber = false
 
