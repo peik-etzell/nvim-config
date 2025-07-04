@@ -48,6 +48,7 @@ set.ignorecase = true
 set.smartcase = true
 set.inccommand = 'split'
 set.signcolumn = 'yes:1'
+set.splitbelow = true
 
 -- folding
 set.foldmethod = 'expr'
