@@ -54,10 +54,10 @@ end, { nargs = '?', complete = 'file' })
 vim.api.nvim_create_user_command('TypstStop', typst_stop, {})
 vim.api.nvim_create_user_command('TypstPreview', typst_preview, {})
 
-vim.bo.commentstring = '// %s'
-vim.bo.softtabstop = 2
-vim.bo.shiftwidth = 2
+vim.opt_local.commentstring = '// %s'
+vim.opt_local.softtabstop = 2
+vim.opt_local.shiftwidth = 2
 
-vim.o.spell = true
-vim.bo.spelllang = 'en_gb'
-vim.bo.spellfile = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
+vim.opt_local.spell = true
+vim.opt_local.spelllang = 'en_gb'
+vim.opt_local.spellfile = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
