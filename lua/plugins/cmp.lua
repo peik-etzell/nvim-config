@@ -163,9 +163,17 @@ return {
 
             completion = {
                 accept = { auto_brackets = { enabled = true } },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 500,
+                },
                 menu = { draw = { treesitter = { 'lsp' } } },
                 -- ghost_text = { enabled = true },
                 list = {
+                    selection = {
+                        auto_insert = false,
+                        preselect = true,
+                    },
                     cycle = {
                         from_bottom = false,
                         from_top = false,
