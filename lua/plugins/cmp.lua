@@ -113,6 +113,13 @@ return {
                     end
                 end,
                 providers = {
+                    path = {
+                        opts = {
+                            get_cwd = function()
+                                return vim.fn.getcwd()
+                            end
+                        }
+                    },
                     dap = { name = 'dap', module = 'blink.compat.source' },
                     buffer = {
                         name = 'Buffer',
