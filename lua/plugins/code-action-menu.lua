@@ -3,10 +3,9 @@ return {
     config = function()
         vim.keymap.set(
             { 'v', 'n' },
-            '<C-.>',
-            require('actions-preview').code_actions,
-            { silent = true }
+            '<tab>',
+            require('actions-preview').code_actions
+            -- { silent = true }
         )
     end,
-    keys = { '<C-.>' },
 }
