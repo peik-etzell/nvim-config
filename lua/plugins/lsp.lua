@@ -40,6 +40,7 @@ return {
 
             local servers = {
                 'fish_lsp',
+                'slangd',
                 'pyright',
                 'texlab',
                 'openscad_lsp',
