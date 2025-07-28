@@ -4,6 +4,15 @@ end
 
 return {
     {
+        'zbirenbaum/copilot.lua',
+        cmd = 'Copilot',
+        event = 'InsertEnter',
+        opts = {
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+        },
+    },
+    {
         'saghen/blink.compat',
         version = '1.*',
         lazy = true,
@@ -29,6 +38,7 @@ return {
                     })
                 end,
             },
+            { 'fang2hou/blink-copilot' },
         },
 
         -- Use a release tag to download pre-built binaries
@@ -99,7 +109,7 @@ return {
                     if is_dap_buffer() then
                         return { 'dap', 'snippets', 'buffer' }
                     else
-                        return { 'lsp', 'path', 'snippets', 'buffer' }
+                        return { 'lsp', 'path', 'snippets', 'buffer', 'copilot' }
                     end
                 end,
                 providers = {
@@ -142,6 +152,11 @@ return {
                             end
                             return out
                         end,
+                    },
+                    copilot = {
+                        name = 'copilot',
+                        module = 'blink-copilot',
+                        async = true,
                     },
                 },
             },
