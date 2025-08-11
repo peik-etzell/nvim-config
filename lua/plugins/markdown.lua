@@ -7,9 +7,9 @@ return {
             'MarkdownPreviewStop',
         },
         ft = { 'markdown' },
-        build = function()
-            vim.cmd([[Lazy load markdown-preview.nvim]])
-            vim.fn['mkdp#util#install']()
+        build = 'cd app && yarn install',
+        init = function()
+            vim.g.mkdp_filetypes = { 'markdown' }
         end,
     },
 }
