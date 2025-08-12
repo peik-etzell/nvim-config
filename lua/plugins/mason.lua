@@ -1,6 +1,6 @@
 return {
     {
-        enabled = not vim.g.nixos,
+        enabled = not vim.g.is_nixos,
         event = 'VeryLazy',
         'williamboman/mason.nvim',
         opts = {

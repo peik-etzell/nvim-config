@@ -17,7 +17,7 @@ return {
             'rcarriga/cmp-dap',
             {
                 'L3MON4D3/LuaSnip',
-                build = (not jit.os:find('Windows'))
+                build = not vim.g.is_windows
                         and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
                     or nil,
                 config = function()

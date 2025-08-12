@@ -1,8 +1,9 @@
 return {
-    "TheLeoP/powershell.nvim",
-    enabled = vim.uv.os_uname().sysname == 'Windows_NT',
+    'TheLeoP/powershell.nvim',
+    enabled = vim.g.is_windows,
     ---@type powershell.user_config
     opts = {
-      bundle_path = vim.fn.stdpath "data" .. "/mason/packages/powershell-editor-services"
-    }
+        bundle_path = vim.fn.stdpath('data')
+            .. '/mason/packages/powershell-editor-services',
+    },
 }

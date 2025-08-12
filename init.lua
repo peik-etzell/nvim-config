@@ -1,9 +1,11 @@
 local set = vim.opt
-local let = vim.g
 
-let.do_filetype_lua = 1
+vim.g.do_filetype_lua = 1
 
-let.nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
+vim.g.is_nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
+vim.g.is_wsl = vim.uv.os_uname().sysname == 'Linux'
+    and vim.uv.os_uname().release:lower():find('microsoft')
+vim.g.is_windows = vim.uv.os_uname().sysname == 'Windows_NT'
 
 vim.filetype.add({
     extension = {
@@ -20,11 +22,11 @@ vim.filetype.add({
     },
 })
 
-let.mapleader = ' '
-let.maplocalleader = ','
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
--- let.border = 'rounded'
-let.border = nil
+-- vim.g.border = 'rounded'
+vim.g.border = nil
 
 -- set.mouse = nil
 set.mouse = 'nv'
@@ -93,6 +95,36 @@ end)
 
 set.updatetime = 300
 set.clipboard = 'unnamedplus'
+
+if vim.g.is_wsl then
+    local function sh(cmd)
+        return "/bin/sh -c '" .. cmd .. "'"
+    end
+    vim.g.clipboard = {
+        name = 'wl-clipboard (wsl)',
+        copy = {
+            ['+'] = sh('wl-copy --foreground --type text/plain'),
+            ['*'] = sh('wl-copy --foreground --primary --type text/plain'),
+        },
+        paste = {
+            ['+'] = function()
+                return vim.fn.systemlist(
+                    sh('wl-paste --no-newline | sed -e "s/\r$//"'),
+                    { '' },
+                    1
+                ) -- '1' keeps empty lines
+            end,
+            ['*'] = function()
+                return vim.fn.systemlist(
+                    sh('wl-paste --primary --no-newline | sed -e "s/\r$//"'),
+                    { '' },
+                    1
+                )
+            end,
+        },
+        cache_enabled = true,
+    }
+end
 
 require('window-management')
 require('wrap')
