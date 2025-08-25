@@ -78,7 +78,7 @@ return {
                 adapters.coreclr = {
                     type = 'executable',
                     command = vim.fn.stdpath('data')
-                        .. '/mason/packages/netcoredbg/netcoredbg',
+                        .. '/mason/packages/netcoredbg/netcoredbg/netcoredbg.exe',
                     args = { '--interpreter=vscode' },
                 }
 
