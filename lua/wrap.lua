@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         'tex',
         'latex',
         'typst',
+        'rst',
         -- 'dap-repl',
     },
     callback = function(_)
