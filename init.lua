@@ -103,8 +103,8 @@ if vim.g.is_wsl then
     vim.g.clipboard = {
         name = 'wl-clipboard (wsl)',
         copy = {
-            ['+'] = sh('wl-copy --foreground --type text/plain'),
-            ['*'] = sh('wl-copy --foreground --primary --type text/plain'),
+            ['+'] = 'wl-copy --foreground --type text/plain',
+            ['*'] = 'wl-copy --foreground --primary --type text/plain',
         },
         paste = {
             ['+'] = function()
