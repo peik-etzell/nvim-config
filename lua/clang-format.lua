@@ -7,8 +7,10 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         if indent_handle then
             local indent_width = tonumber(indent_handle:read('*a'))
             indent_handle:close()
-            vim.opt_local.softtabstop = indent_width
-            vim.opt_local.shiftwidth = indent_width
+            if indent_width ~= nil then
+                vim.opt_local.softtabstop = indent_width
+                vim.opt_local.shiftwidth = indent_width
+            end
         end
 
         local column_handle = io.popen(
@@ -17,7 +19,9 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         if column_handle then
             local columns = tonumber(column_handle:read('*a'))
             column_handle:close()
-            vim.opt_local.colorcolumn = string.format('%d', columns)
+            if columns ~= nil then
+                vim.opt_local.colorcolumn = string.format('%d', columns)
+            end
         end
     end,
 })
