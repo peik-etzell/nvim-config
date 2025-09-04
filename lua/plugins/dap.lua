@@ -41,6 +41,8 @@ return {
                 local adapters = dap.adapters
                 local configurations = dap.configurations
 
+                local mason_pkgs = vim.fn.stdpath('data') .. '/mason/packages'
+
                 vim.fn.sign_define(
                     'DapBreakpoint',
                     { text = '🛑', texthl = '', linehl = '', numhl = '' }
@@ -75,10 +77,12 @@ return {
                 }
 
                 -- C#
+                local netcoredbg = vim.g.is_windows
+                        and mason_pkgs .. '/netcoredbg/netcoredbg/netcoredbg.exe'
+                    or mason_pkgs .. '/netcoredbg/netcoredbg'
                 adapters.coreclr = {
                     type = 'executable',
-                    command = vim.fn.stdpath('data')
-                        .. '/mason/packages/netcoredbg/netcoredbg/netcoredbg.exe',
+                    command = netcoredbg,
                     args = { '--interpreter=vscode' },
                 }
 
@@ -130,7 +134,12 @@ return {
                         type = 'coreclr',
                         name = 'Launch netcoredbg',
                         request = 'launch',
-                        program = require('dap.utils').pick_file,
+                        program = function()
+                            return require('dap.utils').pick_file({
+                                filter = '.*bin/Debug/.*%.dll',
+                                executables = false,
+                            })
+                        end,
                     },
                 }
 
