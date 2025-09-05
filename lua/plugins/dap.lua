@@ -79,6 +79,7 @@ return {
                 -- C#
                 local netcoredbg = vim.g.is_windows
                         and mason_pkgs .. '/netcoredbg/netcoredbg/netcoredbg.exe'
+                    or vim.g.is_nixos and 'netcoredbg'
                     or mason_pkgs .. '/netcoredbg/netcoredbg'
                 adapters.coreclr = {
                     type = 'executable',
