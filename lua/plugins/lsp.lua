@@ -16,10 +16,6 @@ return {
         },
         config = function()
             vim.diagnostic.config({ virtual_text = false, severity_sort = true })
-            vim.lsp.handlers['textDocument/hover'] =
-                vim.lsp.with(vim.lsp.handlers.hover, {
-                    border = vim.g.border,
-                })
             require('lspconfig.ui.windows').default_options.border =
                 vim.g.border
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -35,6 +31,9 @@ return {
                     end
                     set_keymap('<C-S-k>', vim.lsp.buf.signature_help)
                     set_keymap('<leader>rn', vim.lsp.buf.rename)
+                    set_keymap('K', function()
+                        vim.lsp.buf.hover({ border = vim.g.border })
+                    end)
                 end,
             })
 
