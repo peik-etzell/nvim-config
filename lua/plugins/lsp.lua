@@ -33,7 +33,14 @@ return {
                     set_keymap('<C-S-k>', vim.lsp.buf.signature_help)
                     set_keymap('<leader>rn', vim.lsp.buf.rename)
                     set_keymap('K', function()
-                        vim.lsp.buf.hover({ border = vim.g.border })
+                        vim.lsp.buf.hover({
+                            border = vim.g.border,
+                            close_events = {
+                                'CursorMoved',
+                                'BufLeave',
+                                'WinLeave',
+                            },
+                        })
                     end)
 
                     set_keymap('gt', vim.lsp.buf.type_definition)
