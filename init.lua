@@ -27,8 +27,8 @@ vim.filetype.add({
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
--- vim.g.border = 'rounded'
-vim.g.border = nil
+vim.g.border = 'rounded'
+-- vim.g.border = nil
 
 -- set.mouse = nil
 set.mouse = 'nv'
