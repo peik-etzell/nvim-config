@@ -35,6 +35,11 @@ return {
                     set_keymap('K', function()
                         vim.lsp.buf.hover({ border = vim.g.border })
                     end)
+
+                    set_keymap('gt', vim.lsp.buf.type_definition)
+                    set_keymap('gr', vim.lsp.buf.references)
+                    set_keymap('gd', vim.lsp.buf.definition)
+                    set_keymap('gi', vim.lsp.buf.implementation)
                 end,
             })
 
