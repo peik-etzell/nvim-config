@@ -14,6 +14,7 @@ return {
                 ft = { 'cpp', 'c' },
             },
         },
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             vim.diagnostic.config({ virtual_text = false, severity_sort = true })
             require('lspconfig.ui.windows').default_options.border =
@@ -37,98 +38,105 @@ return {
                 end,
             })
 
-            local servers = {
-                'fish_lsp',
-                'slangd',
-                'pyright',
-                'texlab',
-                'openscad_lsp',
-                'cmake',
-                'dockerls',
-                'docker_compose_language_service',
-                'jsonls',
-                'cssls',
-                'html',
-                -- 'htmx',
-                'marksman',
-                'lemminx',
-                'eslint',
-                'asm_lsp',
-                'elmls',
-                'svelte',
-                'autotools_ls',
-                'superhtml',
-                'postgres_lsp',
-            }
-            local lspconfig = require('lspconfig')
             local default_capabilities =
                 require('blink.cmp').get_lsp_capabilities()
-            for _, server in ipairs(servers) do
-                lspconfig[server].setup({
-                    capabilities = default_capabilities,
-                })
-            end
-            lspconfig.lua_ls.setup({
+
+            vim.lsp.config('*', {
                 capabilities = default_capabilities,
+                root_markers = { '.git' },
+            })
+
+            vim.lsp.config.lua_ls = {
                 settings = {
                     Lua = {
                         completion = {
                             callSnippet = 'Replace',
                         },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = {
+                                vim.env.VIMRUNTIME,
+                            },
+                        },
+                        telemetry = { enable = false },
                     },
                 },
-            })
-            lspconfig.bashls.setup({
-                capabilities = default_capabilities,
+            }
+
+            vim.lsp.config.bashls = {
                 filetypes = { 'sh', 'zsh', 'bash' },
-            })
-            lspconfig.clangd.setup({
-                capabilities = default_capabilities,
+            }
+
+            vim.lsp.config.clangd = {
+                capabilities = vim.tbl_extend(
+                    'force',
+                    default_capabilities,
+                    { offsetEncoding = 'utf-8' }
+                ),
                 filetypes = { 'cpp', 'c', 'cuda', 'objcpp', 'objc' },
-            })
-            local function omnisharp_cmd()
-                return { vim.g.is_linux and 'OmniSharp' or 'omnisharp' }
-            end
-            lspconfig.omnisharp.setup({
-                capabilities = default_capabilities,
-                cmd = omnisharp_cmd(),
-            })
+            }
+
+            vim.lsp.config.omnisharp = {
+                cmd = { vim.g.is_linux and 'OmniSharp' or 'omnisharp' },
+            }
+
             vim.g.zig_fmt_autosave = 0
-            lspconfig.zls.setup({
-                capabilities = default_capabilities,
+            vim.lsp.config.zls = {
                 settings = {
                     enable_autofix = false,
                     enable_build_on_save = true,
                 },
-            })
+                root_markers = { 'zls.json', 'build.zig', '.git' },
+            }
 
-            lspconfig.nil_ls.setup({
-                capabilities = default_capabilities,
+            vim.lsp.config.nil_ls = {
                 settings = {
                     ['nil'] = {
+                        nix = {
+                            flake = { autoArchive = true },
+                        },
                         formatting = {
                             command = { 'nixfmt' },
                         },
                     },
                 },
-            })
+            }
 
-            lspconfig.denols.setup({
-                capabilities = default_capabilities,
-                root_dir = lspconfig.util.root_pattern(
-                    'deno.json',
-                    'deno.jsonc'
-                ),
-            })
-            lspconfig.ts_ls.setup({
-                capabilities = default_capabilities,
-                root_dir = lspconfig.util.root_pattern('package.json'),
-                single_file_support = false,
-            })
-            lspconfig.tinymist.setup({
-                capabilities = default_capabilities,
+            vim.lsp.config.denols = {
+                root_markers = { 'deno.json', 'deno.jsonc' },
+                settings = {
+                    deno = {
+                        enable = true,
+                        unstable = true,
+                        suggest = {
+                            imports = {
+                                hosts = {
+                                    ['https://deno.land'] = true,
+                                },
+                            },
+                        },
+                    },
+                },
+            }
+            vim.lsp.config.html = {
+                root_markers = { 'package.json', 'deno.json', '.git' },
+                filetypes = { 'html', 'templ', 'eta' },
+            }
+
+            vim.lsp.config.tinymist = {
+                root_markers = { 'main.typ' },
                 single_file_support = true,
-            })
+                settings = {
+                    exportPdf = 'never',
+                    systemFonts = true,
+                    semanticTokens = 'disable',
+                    compileStatus = 'disable',
+                    dragAndDrop = 'disable',
+                    renderDocs = 'disable',
+                    previewFeature = 'disable',
+                },
+            }
+
             -- lspconfig.harper_ls.setup({
             --     capabilities = default_capabilities,
             --     settings = {
@@ -139,6 +147,39 @@ return {
             --         },
             --     },
             -- })
+
+            vim.lsp.enable({
+                'asm_lsp',
+                'autotools_ls',
+                'bashls',
+                'clangd',
+                'cmake',
+                'cssls',
+                'denols',
+                'docker_compose_language_service',
+                'dockerls',
+                'elmls',
+                'eslint',
+                'fish_lsp',
+                'html',
+                'json',
+                'jsonls',
+                'lemminx',
+                'lua_ls',
+                'marksman',
+                'nil_ls',
+                'openscad_lsp',
+                'postgres_lsp',
+                'pyright',
+                'slangd',
+                'superhtml',
+                'svelte',
+                'texlab',
+                'tinymist',
+                'yamlls',
+                'zls',
+                -- 'basedpyright',
+            })
         end,
     },
 }
