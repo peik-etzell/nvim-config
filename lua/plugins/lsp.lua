@@ -173,6 +173,7 @@ return {
                 'lua_ls',
                 'marksman',
                 'nil_ls',
+                'omnisharp',
                 'openscad_lsp',
                 'postgres_lsp',
                 'pyright',
