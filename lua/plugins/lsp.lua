@@ -89,7 +89,16 @@ return {
             }
 
             vim.lsp.config.omnisharp = {
-                cmd = { vim.g.is_linux and 'OmniSharp' or 'omnisharp' },
+                cmd = {
+                    vim.g.is_linux and 'OmniSharp' or 'omnisharp',
+                    '-z',
+                    '--hostPID',
+                    '12345',
+                    'DotNet:enablePackageRestore=false',
+                    '--encoding',
+                    'utf-8',
+                    '--languageserver',
+                },
             }
 
             vim.g.zig_fmt_autosave = 0
