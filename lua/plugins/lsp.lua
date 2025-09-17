@@ -33,14 +33,20 @@ return {
                     set_keymap('<C-S-k>', vim.lsp.buf.signature_help)
                     set_keymap('<leader>rn', vim.lsp.buf.rename)
                     set_keymap('K', function()
-                        vim.lsp.buf.hover({
-                            border = vim.g.border,
-                            close_events = {
-                                'CursorMoved',
-                                'BufLeave',
-                                'WinLeave',
-                            },
-                        })
+                        if require('dap').status() ~= '' then
+                            require('dapui').eval()
+                        else
+                            vim.lsp.buf.hover({
+                                border = vim.g.border,
+                                close_events = {
+                                    'CursorMoved',
+                                    'BufLeave',
+                                    'WinLeave',
+                                    'FocusLost',
+                                    'CmdlineEnter',
+                                },
+                            })
+                        end
                     end)
 
                     set_keymap('gt', vim.lsp.buf.type_definition)
