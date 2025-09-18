@@ -5,10 +5,6 @@ return {
         enabled = vim.g.use_mason,
         event = 'VeryLazy',
         'williamboman/mason.nvim',
-        opts = {
-            ui = {
-                border = vim.g.border,
-            },
-        },
+        opts = {},
     },
 }

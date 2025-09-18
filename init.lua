@@ -27,8 +27,7 @@ vim.filetype.add({
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
-vim.g.border = 'rounded'
--- vim.g.border = nil
+vim.o.winborder = 'rounded'
 
 -- set.mouse = nil
 set.mouse = 'nv'
@@ -76,9 +75,7 @@ local function set_keymap(lhs, rhs)
     vim.keymap.set('n', lhs, rhs, { silent = true })
 end
 
-set_keymap('<C-k>', function()
-    vim.diagnostic.open_float({ border = vim.g.border })
-end)
+set_keymap('<C-k>', vim.diagnostic.open_float)
 set_keymap('<leader>s', function()
     vim.lsp.buf.format({
         async = true,
@@ -159,7 +156,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
     spec = { import = 'plugins' },
-    ui = { border = vim.g.border },
+    ui = { border = vim.o.winborder },
     change_detection = { notify = false },
     performance = { rtp = { reset = false } },
 })

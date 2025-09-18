@@ -17,8 +17,6 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             vim.diagnostic.config({ virtual_text = false, severity_sort = true })
-            require('lspconfig.ui.windows').default_options.border =
-                vim.g.border
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP on_attach',
                 callback = function(event)
@@ -37,7 +35,6 @@ return {
                             require('dapui').eval()
                         else
                             vim.lsp.buf.hover({
-                                border = vim.g.border,
                                 close_events = {
                                     'CursorMoved',
                                     'BufLeave',
