@@ -20,17 +20,21 @@ return {
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP on_attach',
                 callback = function(event)
-                    local function set_keymap(lhs, rhs)
+                    local function nmap(lhs, rhs, desc)
                         vim.keymap.set(
                             'n',
                             lhs,
                             rhs,
-                            { silent = true, buffer = event.buf }
+                            { silent = true, buffer = event.buf, desc = desc }
                         )
                     end
-                    set_keymap('<C-S-k>', vim.lsp.buf.signature_help)
-                    set_keymap('<leader>rn', vim.lsp.buf.rename)
-                    set_keymap('K', function()
+                    nmap(
+                        '<C-S-k>',
+                        vim.lsp.buf.signature_help,
+                        'Signature help'
+                    )
+                    nmap('<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
+                    nmap('K', function()
                         if require('dap').status() ~= '' then
                             require('dapui').eval()
                         else
@@ -44,12 +48,20 @@ return {
                                 },
                             })
                         end
-                    end)
+                    end, 'Symbol information')
 
-                    set_keymap('gt', vim.lsp.buf.type_definition)
-                    set_keymap('gr', vim.lsp.buf.references)
-                    set_keymap('gd', vim.lsp.buf.definition)
-                    set_keymap('gi', vim.lsp.buf.implementation)
+                    nmap(
+                        'gt',
+                        vim.lsp.buf.type_definition,
+                        'Goto type definition'
+                    )
+                    nmap('grr', vim.lsp.buf.references, 'List references')
+                    nmap('gd', vim.lsp.buf.definition, 'Goto definition')
+                    nmap(
+                        'gi',
+                        vim.lsp.buf.implementation,
+                        'Goto implementation'
+                    )
                 end,
             })
 
