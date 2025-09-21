@@ -31,19 +31,29 @@ return {
                     },
                 },
             })
-            local opts = { silent = true }
+
+            local function nmap(lhs, rhs, desc)
+                vim.keymap.set('n', lhs, rhs, {
+                    silent = true,
+                    desc = desc,
+                })
+            end
+
             local tree = require('nvim-tree.api').tree
-            vim.keymap.set('n', '<leader>at', function()
+
+            nmap('<leader>at', function()
                 tree.toggle({
                     find_file = false,
                 })
-            end, opts)
-            vim.keymap.set('n', '<leader>af', function()
+            end, 'Sidebar - Toggle')
+
+            nmap('<leader>af', function()
                 tree.find_file({
                     open = true,
                     focus = true,
                 })
-            end, opts)
+            end, 'Sidebar - Focus file')
+
             vim.g.loaded_netrw = 1
             vim.g.loaded_netrwPlugin = 1
         end,

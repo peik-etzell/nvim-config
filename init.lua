@@ -66,32 +66,37 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
-vim.keymap.set({ 'n', 'i', 't' }, '<D-Space>', '', {})
-vim.keymap.set('n', '<BS>', '', {})
-vim.keymap.set({ 'n', 'v' }, ' ', '', {})
-vim.keymap.set({ 'n', 'v' }, '<CR>', '', {})
-
-local function set_keymap(lhs, rhs)
-    vim.keymap.set('n', lhs, rhs, { silent = true })
+local function unmap(modes, lhs)
+    vim.keymap.set(modes, lhs, '', {})
 end
 
-set_keymap('<C-k>', vim.diagnostic.open_float)
-set_keymap('<leader>s', function()
+unmap({ 'n', 'i', 't' }, '<D-Space>')
+unmap('n', '<BS>')
+unmap({ 'n', 'v' }, ' ')
+unmap({ 'n', 'v' }, '<CR>')
+unmap({ 'n', 'v' }, '<Del>')
+
+local function nmap(lhs, rhs, desc)
+    vim.keymap.set('n', lhs, rhs, { silent = true, desc = desc })
+end
+
+nmap('<C-k>', vim.diagnostic.open_float, 'Open diagnostics')
+nmap('<leader>s', function()
     vim.lsp.buf.format({
         async = true,
         filter = function(server)
             return server.name ~= 'lua_ls' and server.name ~= 'tsserver'
         end,
     })
-end)
+end, 'Format file')
 
-set_keymap('<ESC>', function()
+nmap('<ESC>', function()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         if vim.api.nvim_win_get_config(win).relative == 'win' then
             vim.api.nvim_win_close(win, false)
         end
     end
-end)
+end, 'Close hover')
 
 set.updatetime = 300
 set.clipboard = 'unnamedplus'
