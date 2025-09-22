@@ -8,6 +8,16 @@ return {
                 color = '#f08080',
                 name = 'tsv',
             },
+            ['mzn'] = {
+                icon = '',
+                color = '#00a2ff',
+                name = 'minizinc',
+            },
+            ['dzn'] = {
+                icon = '',
+                color = '#00a2ff',
+                name = 'minizinc',
+            },
         },
     },
 }
