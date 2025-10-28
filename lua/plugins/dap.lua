@@ -137,7 +137,7 @@ return {
                         request = 'launch',
                         program = function()
                             return require('dap.utils').pick_file({
-                                filter = '.*bin/Debug/.*%.dll',
+                                filter = '.*bin.*/Debug/.*%.dll',
                                 executables = false,
                             })
                         end,
