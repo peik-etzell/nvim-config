@@ -13,6 +13,18 @@ return {
                 'https://git.sr.ht/~p00f/clangd_extensions.nvim',
                 ft = { 'cpp', 'c' },
             },
+            {
+                'someone-stole-my-name/yaml-companion.nvim',
+                dependencies = {
+                    { 'neovim/nvim-lspconfig' },
+                    { 'nvim-lua/plenary.nvim' },
+                    { 'nvim-telescope/telescope.nvim' },
+                },
+                config = function()
+                    require('telescope').load_extension('yaml_schema')
+                end,
+                ft = { 'yaml', 'json' },
+            },
         },
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
@@ -175,6 +187,9 @@ return {
                     previewFeature = 'disable',
                 },
             }
+
+            local yaml_companion = require('yaml-companion')
+            vim.lsp.config.yamlls = yaml_companion.setup()
 
             -- lspconfig.harper_ls.setup({
             --     capabilities = default_capabilities,
