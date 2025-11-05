@@ -18,16 +18,6 @@ return {
         config = function()
             require('telescope').setup({
                 defaults = {
-                    vimgrep_arguments = {
-                        'rg',
-                        '--color=never',
-                        '--no-heading',
-                        '--with-filename',
-                        '--line-number',
-                        '--column',
-                        '--smart-case',
-                        '--no-ignore-vcs',
-                    },
                     sorting_strategy = 'ascending',
                     scroll_strategy = 'limit',
                     layout_strategy = 'flex',
@@ -85,12 +75,21 @@ return {
                 builtin.find_files({
                     find_command = {
                         'rg',
-                        '--files',
                         '--color=never',
+                        '--column',
+                        '--files',
+                        '--no-heading',
                         '--no-ignore-vcs',
+                        '--smart-case',
+                        '--with-filename',
                     },
                 })
-            end, 'Fuzzy find files')
+            end, 'Open file')
+
+            map('<leader>o', function()
+                builtin.git_files()
+            end, 'Open file - git')
+
             map('<leader>c', function()
                 builtin.colorscheme({
                     layout_strategy = 'cursor',
@@ -100,21 +99,39 @@ return {
                     },
                 })
             end, 'Change colorscheme')
-            map('<leader>g', function()
+
+            map('<leader>i', function()
                 builtin.live_grep({ layout_strategy = 'vertical' })
+            end, 'Fuzzy find in files - git')
+
+            map('<leader>g', function()
+                builtin.live_grep({
+                    find_command = {
+                        'rg',
+                        '--color=never',
+                        '--column',
+                        '--line-number',
+                        '--no-heading',
+                        '--no-ignore-vcs',
+                        '--smart-case',
+                        '--with-filename',
+                    },
+                    layout_strategy = 'vertical',
+                })
             end, 'Fuzzy find in files')
+
             map('<leader>lr', function()
                 builtin.lsp_references()
-            end, 'Lsp references')
+            end, '[L]sp [r]eferences')
             map('<leader>lk', function()
                 builtin.diagnostics()
-            end, 'Lsp diagnostics')
+            end, '[L]sp diagnosti[k]s')
             map('<leader>li', function()
                 builtin.lsp_implementations()
-            end, 'Lsp implementations')
+            end, '[L]sp [i]mplementations')
             map('<leader>ld', function()
                 builtin.lsp_definitions()
-            end, 'Lsp definitions')
+            end, '[L]sp [d]efinitions')
             map('<C-/>', function()
                 builtin.current_buffer_fuzzy_find({
                     layout_strategy = 'vertical',
@@ -122,7 +139,7 @@ return {
             end, 'Fuzzy find in current buffer')
             map('<leader>ta', function()
                 builtin.builtin()
-            end, 'Telescope builtins')
+            end, '[T]elescope builtins - [a]ll')
         end,
     },
 }
