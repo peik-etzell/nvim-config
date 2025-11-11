@@ -106,16 +106,7 @@ return {
 
             map('<leader>g', function()
                 builtin.live_grep({
-                    find_command = {
-                        'rg',
-                        '--color=never',
-                        '--column',
-                        '--line-number',
-                        '--no-heading',
-                        '--no-ignore-vcs',
-                        '--smart-case',
-                        '--with-filename',
-                    },
+                    additional_args = { '--no-ignore-vcs' },
                     layout_strategy = 'vertical',
                 })
             end, 'Fuzzy find in files')
