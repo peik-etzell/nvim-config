@@ -4,6 +4,19 @@ end
 
 return {
     {
+        'zbirenbaum/copilot.lua',
+        cmd = 'Copilot',
+        event = 'InsertEnter',
+        opts = {
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+            -- filetypes = {
+            --     markdown = true,
+            --     help = true,
+            -- },
+        },
+    },
+    {
         'saghen/blink.compat',
         version = '1.*',
         lazy = true,
@@ -29,6 +42,7 @@ return {
                     })
                 end,
             },
+            { 'fang2hou/blink-copilot' },
         },
 
         -- Use a release tag to download pre-built binaries
@@ -97,9 +111,9 @@ return {
                 -- https://github.com/Saghen/blink.compat/issues/23#issuecomment-2563890260
                 default = function()
                     if is_dap_buffer() then
-                        return { 'dap', 'snippets', 'buffer' }
+                        return { 'dap', 'snippets', 'buffer', 'copilot' }
                     else
-                        return { 'lsp', 'path', 'snippets', 'buffer' }
+                        return { 'lsp', 'path', 'snippets', 'buffer', 'copilot' }
                     end
                 end,
                 providers = {
@@ -107,8 +121,8 @@ return {
                         opts = {
                             get_cwd = function()
                                 return vim.fn.getcwd()
-                            end
-                        }
+                            end,
+                        },
                     },
                     dap = { name = 'dap', module = 'blink.compat.source' },
                     buffer = {
@@ -150,6 +164,12 @@ return {
                             return out
                         end,
                     },
+                    copilot = {
+                        name = 'copilot',
+                        module = 'blink-copilot',
+                        score_offset = 100,
+                        async = true,
+                    },
                 },
             },
 
@@ -174,6 +194,16 @@ return {
             },
 
             signature = { enabled = true },
+        },
+    },
+    {
+        'CopilotC-Nvim/CopilotChat.nvim',
+        dependencies = {
+            { 'nvim-lua/plenary.nvim', branch = 'master' },
+        },
+        -- build = 'make tiktoken',
+        opts = {
+            -- See Configuration section for options
         },
     },
 }
