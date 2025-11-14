@@ -42,7 +42,6 @@ return {
                     })
                 end,
             },
-            { 'fang2hou/blink-copilot' },
         },
 
         -- Use a release tag to download pre-built binaries
@@ -111,9 +110,9 @@ return {
                 -- https://github.com/Saghen/blink.compat/issues/23#issuecomment-2563890260
                 default = function()
                     if is_dap_buffer() then
-                        return { 'dap', 'snippets', 'buffer', 'copilot' }
+                        return { 'dap', 'snippets', 'buffer' }
                     else
-                        return { 'lsp', 'path', 'snippets', 'buffer', 'copilot' }
+                        return { 'lsp', 'path', 'snippets', 'buffer' }
                     end
                 end,
                 providers = {
@@ -163,12 +162,6 @@ return {
                             end
                             return out
                         end,
-                    },
-                    copilot = {
-                        name = 'copilot',
-                        module = 'blink-copilot',
-                        score_offset = 100,
-                        async = true,
                     },
                 },
             },
