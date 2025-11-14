@@ -18,6 +18,11 @@ return {
             { 'nvim-lua/plenary.nvim', branch = 'master' },
         },
         -- build = 'make tiktoken',
+        config = function()
+            vim.keymap.set('n', '<leader>c', function()
+                require('CopilotChat').toggle()
+            end, {})
+        end,
         opts = {
             -- See Configuration section for options
             mappings = {
