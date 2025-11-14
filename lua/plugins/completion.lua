@@ -4,19 +4,6 @@ end
 
 return {
     {
-        'zbirenbaum/copilot.lua',
-        cmd = 'Copilot',
-        event = 'InsertEnter',
-        opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-            -- filetypes = {
-            --     markdown = true,
-            --     help = true,
-            -- },
-        },
-    },
-    {
         'saghen/blink.compat',
         version = '1.*',
         lazy = true,
@@ -187,16 +174,6 @@ return {
             },
 
             signature = { enabled = true },
-        },
-    },
-    {
-        'CopilotC-Nvim/CopilotChat.nvim',
-        dependencies = {
-            { 'nvim-lua/plenary.nvim', branch = 'master' },
-        },
-        -- build = 'make tiktoken',
-        opts = {
-            -- See Configuration section for options
         },
     },
 }
