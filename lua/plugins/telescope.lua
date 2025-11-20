@@ -90,15 +90,6 @@ return {
                 builtin.git_files()
             end, 'Open file - git')
 
-            map('<leader>c', function()
-                builtin.colorscheme({
-                    layout_strategy = 'cursor',
-                    layout_config = {
-                        width = 25,
-                        height = 10,
-                    },
-                })
-            end, 'Change colorscheme')
 
             map('<leader>i', function()
                 builtin.live_grep({ layout_strategy = 'vertical' })
