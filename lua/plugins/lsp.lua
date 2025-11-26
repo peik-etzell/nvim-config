@@ -115,19 +115,6 @@ return {
                 filetypes = { 'cpp', 'c', 'cuda', 'objcpp', 'objc' },
             }
 
-            vim.lsp.config.omnisharp = {
-                cmd = {
-                    vim.g.is_linux and 'OmniSharp' or 'omnisharp',
-                    '-z',
-                    '--hostPID',
-                    '12345',
-                    'DotNet:enablePackageRestore=false',
-                    '--encoding',
-                    'utf-8',
-                    '--languageserver',
-                },
-            }
-
             vim.g.zig_fmt_autosave = 0
             vim.lsp.config.zls = {
                 settings = {
@@ -222,7 +209,6 @@ return {
                 'lua_ls',
                 'marksman',
                 'nil_ls',
-                'omnisharp',
                 'openscad_lsp',
                 'postgres_lsp',
                 'pyright',
