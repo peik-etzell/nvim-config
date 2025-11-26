@@ -2,7 +2,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
-            { 'linrongbin16/lsp-progress.nvim', opts = {} },
+            -- { 'linrongbin16/lsp-progress.nvim', opts = {} },
         },
         enabled = not vim.g.started_by_firenvim,
         init = function()
@@ -66,7 +66,7 @@ return {
                     lualine_c = { filepath },
                     lualine_x = {
                         'diagnostics',
-                        require('lsp-progress').progress,
+                        'lsp_status',
                     },
                     lualine_y = {},
                     lualine_z = {},
