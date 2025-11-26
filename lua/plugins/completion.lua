@@ -99,7 +99,7 @@ return {
                     if is_dap_buffer() then
                         return { 'dap', 'snippets', 'buffer' }
                     else
-                        return { 'lsp', 'path', 'snippets', 'buffer' }
+                        return { 'lsp', 'path', 'snippets' }
                     end
                 end,
                 providers = {
@@ -111,6 +111,10 @@ return {
                         },
                     },
                     dap = { name = 'dap', module = 'blink.compat.source' },
+                    lsp = {
+                        async = false,
+                        fallbacks = { 'buffer' },
+                    },
                     buffer = {
                         name = 'Buffer',
                         transform_items = function(a, items)
