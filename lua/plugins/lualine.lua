@@ -3,6 +3,16 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = {
             -- { 'linrongbin16/lsp-progress.nvim', opts = {} },
+            {
+                'abccsss/nvim-gitstatus',
+                event = 'VeryLazy',
+                config = true,
+                opts = {
+                    auto_fetch_interval = 30000,
+                    git_status_timeout = 1000,
+                    debug = false,
+                },
+            },
         },
         enabled = not vim.g.started_by_firenvim,
         init = function()
@@ -69,7 +79,15 @@ return {
                         'lsp_status',
                     },
                     lualine_y = {},
-                    lualine_z = {},
+                    lualine_z = {
+                        {
+                            'gitstatus',
+                            sections = {
+                                { 'ahead', format = '{}↑' },
+                                { 'behind', format = '{}↓' },
+                            },
+                        },
+                    },
                 },
                 inactive_winbar = {
                     lualine_a = { filepath },
