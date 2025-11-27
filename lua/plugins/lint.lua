@@ -9,7 +9,7 @@ return {
 
             local lint = require('lint')
             lint.linters_by_ft = {
-                cmake = { 'cmakelint' },
+                -- cmake = { 'cmakelint' },
                 make = { 'checkmake' },
                 nix = { 'statix' },
                 sh = { 'shellcheck', 'shellharden' },

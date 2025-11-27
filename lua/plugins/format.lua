@@ -34,7 +34,7 @@ return {
 
                 sh = { 'shfmt' },
 
-                cmake = { 'cmake_format' },
+                -- cmake = { 'cmake_format' },
 
                 javascript = deno_overwrite(),
                 typescript = deno_overwrite(),

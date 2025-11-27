@@ -189,12 +189,17 @@ return {
             --     },
             -- })
 
+
+            vim.lsp.config.neocmake = {
+                cmd = { 'neocmakelsp', 'stdio' }
+            }
+
             vim.lsp.enable({
                 'asm_lsp',
                 'autotools_ls',
                 'bashls',
                 'clangd',
-                'cmake',
+                'neocmake',
                 'cssls',
                 'denols',
                 'docker_compose_language_service',
