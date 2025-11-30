@@ -59,13 +59,6 @@ set.foldexpr = 'nvim_treesitter#foldexpr()'
 set.foldenable = false
 set.foldlevel = 99
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({ timeout = 500 })
-    end,
-})
-
 local function unmap(modes, lhs)
     vim.keymap.set(modes, lhs, '', {})
 end
@@ -137,6 +130,7 @@ require('fix_comment_strings')
 require('terminal')
 -- require('termdebug')
 require('clang-format')
+require('autocmd')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

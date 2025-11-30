@@ -27,11 +27,3 @@ set_keymap('<A-C-h>', resize('-3', true))
 set_keymap('<A-C-j>', resize('-1', false))
 set_keymap('<A-C-k>', resize('+1', false))
 set_keymap('<A-C-l>', resize('+3', true))
-
--- Resize nvim splits when whole window resizes
-vim.api.nvim_create_autocmd({ 'VimResized' }, {
-    pattern = { '*' },
-    callback = function()
-        vim.cmd.wincmd('=')
-    end,
-})
