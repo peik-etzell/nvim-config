@@ -13,18 +13,7 @@ return {
                 'https://git.sr.ht/~p00f/clangd_extensions.nvim',
                 ft = { 'cpp', 'c' },
             },
-            {
-                'someone-stole-my-name/yaml-companion.nvim',
-                dependencies = {
-                    { 'neovim/nvim-lspconfig' },
-                    { 'nvim-lua/plenary.nvim' },
-                    { 'nvim-telescope/telescope.nvim' },
-                },
-                config = function()
-                    require('telescope').load_extension('yaml_schema')
-                end,
-                ft = { 'yaml', 'json' },
-            },
+            'b0o/schemastore.nvim',
         },
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
@@ -175,8 +164,17 @@ return {
                 },
             }
 
-            local yaml_companion = require('yaml-companion')
-            vim.lsp.config.yamlls = yaml_companion.setup()
+            vim.lsp.config.yamlls = {
+                settings = {
+                    yaml = {
+                        schemaStore = {
+                            enable = false,
+                            url = '',
+                        },
+                        schemas = require('schemastore').yaml.schemas(),
+                    },
+                },
+            }
 
             -- lspconfig.harper_ls.setup({
             --     capabilities = default_capabilities,
@@ -189,9 +187,17 @@ return {
             --     },
             -- })
 
-
             vim.lsp.config.neocmake = {
-                cmd = { 'neocmakelsp', 'stdio' }
+                cmd = { 'neocmakelsp', 'stdio' },
+            }
+
+            vim.lsp.config.jsonls = {
+                settings = {
+                    json = {
+                        schemas = require('schemastore').json.schemas(),
+                        validate = { enable = true },
+                    },
+                },
             }
 
             vim.lsp.enable({
