@@ -1,1 +1,4 @@
-return { 'gpanders/nvim-parinfer' }
+return {
+    'gpanders/nvim-parinfer',
+    ft = { 'lisp' },
+}
