@@ -1,11 +1,28 @@
 return {
-    'aznhe21/actions-preview.nvim',
-    config = function()
-        vim.keymap.set(
-            { 'v', 'n' },
+    'rachartier/tiny-code-action.nvim',
+    dependencies = {
+        { 'nvim-lua/plenary.nvim' },
+
+        -- optional picker via telescope
+        { 'nvim-telescope/telescope.nvim' },
+        -- -- optional picker via fzf-lua
+        -- {"ibhagwan/fzf-lua"},
+        -- -- .. or via snacks
+        -- {
+        --   "folke/snacks.nvim",
+        --   opts = {
+        --     terminal = {},
+        --   }
+        -- }
+    },
+    event = 'LspAttach',
+    opts = {},
+    keys = {
+        {
             '<tab>',
-            require('actions-preview').code_actions
-            -- { silent = true }
-        )
-    end,
+            function()
+                require('tiny-code-action').code_action({})
+            end,
+        },
+    },
 }
