@@ -130,19 +130,6 @@ return {
                 configurations.c = configurations.cpp
                 configurations.rust = configurations.cpp
                 configurations.zig = { lldb_config }
-                configurations.cs = {
-                    {
-                        type = 'coreclr',
-                        name = 'Launch netcoredbg',
-                        request = 'launch',
-                        program = function()
-                            return require('dap.utils').pick_file({
-                                filter = '.*bin.*/Debug/.*%.dll',
-                                executables = false,
-                            })
-                        end,
-                    },
-                }
 
                 local opts = { silent = true }
                 vim.keymap.set({ 'i', 'n' }, '<F5>', dap.continue, opts)
