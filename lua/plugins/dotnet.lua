@@ -16,4 +16,7 @@ return {
             bin_path = netcoredbg,
         },
     },
+    keys = {
+        { '<leader>dn', ':Dotnet<CR>', desc = '[D]ot[N]et' },
+    },
 }
