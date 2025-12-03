@@ -15,6 +15,7 @@ return {
         },
     },
     {
+        enabled = false,
         'CopilotC-Nvim/CopilotChat.nvim',
         dependencies = {
             { 'nvim-lua/plenary.nvim', branch = 'master' },
@@ -32,6 +33,27 @@ return {
                     normal = '<CR>',
                     -- insert = '<A-y>',
                 },
+            },
+        },
+    },
+    {
+        "olimorris/codecompanion.nvim",
+        tag = 'v17.33.0',
+        pin = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim"
+        },
+        opts = {
+            ignore_warnings = true,
+            strategies = {
+                chat = {
+                    name = "copilot",
+                    model = "gpt-4.1"
+                },
+            },
+            -- NOTE: The log_level is in `opts.opts`
+            opts = {
+                log_level = "DEBUG",
             },
         },
     },
