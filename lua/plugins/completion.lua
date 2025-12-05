@@ -1,6 +1,6 @@
-local function is_dap_buffer()
-    return require('cmp_dap').is_dap_buffer()
-end
+-- local function is_dap_buffer()
+--     return require('cmp_dap').is_dap_buffer()
+-- end
 
 return {
     -- {
@@ -91,7 +91,7 @@ return {
             -- elsewhere in your config, without redefining it, via `opts_extend`
 
             enabled = function()
-                return vim.bo.buftype ~= 'prompt' or is_dap_buffer()
+                return vim.bo.buftype ~= 'prompt' -- or is_dap_buffer()
             end,
             sources = {
                 -- https://github.com/Saghen/blink.compat/issues/23#issuecomment-2563890260
