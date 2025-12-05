@@ -3,18 +3,18 @@ local function is_dap_buffer()
 end
 
 return {
-    {
-        'saghen/blink.compat',
-        version = '1.*',
-        lazy = true,
-        opts = {},
-    },
+    -- {
+    --     'saghen/blink.compat',
+    --     version = '1.*',
+    --     lazy = true,
+    --     opts = {},
+    -- },
     {
         'saghen/blink.cmp',
         lazy = false, -- Lazy loading handled internally
         dependencies = {
             'rafamadriz/friendly-snippets',
-            'rcarriga/cmp-dap',
+            -- 'rcarriga/cmp-dap',
             {
                 'L3MON4D3/LuaSnip',
                 build = not vim.g.is_windows
@@ -96,11 +96,11 @@ return {
             sources = {
                 -- https://github.com/Saghen/blink.compat/issues/23#issuecomment-2563890260
                 default = function()
-                    if is_dap_buffer() then
-                        return { 'dap', 'snippets', 'buffer' }
-                    else
-                        return { 'lsp', 'path', 'snippets' }
-                    end
+                    -- if is_dap_buffer() then
+                    --     return { 'dap', 'snippets', 'buffer' }
+                    -- else
+                    return { 'lsp', 'easy-dotnet', 'path', 'snippets' }
+                    -- end
                 end,
                 providers = {
                     path = {
@@ -110,7 +110,7 @@ return {
                             end,
                         },
                     },
-                    dap = { name = 'dap', module = 'blink.compat.source' },
+                    -- dap = { name = 'dap', module = 'blink.compat.source' },
                     lsp = {
                         async = false,
                         fallbacks = { 'buffer' },

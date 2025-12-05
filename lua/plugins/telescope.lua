@@ -6,13 +6,13 @@ return {
         dependencies = {
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-            {
-                'nvim-telescope/telescope-dap.nvim',
-                dependencies = {
-                    'mfussenegger/nvim-dap',
-                    'nvim-treesitter/nvim-treesitter',
-                },
-            },
+            -- {
+            --     'nvim-telescope/telescope-dap.nvim',
+            --     dependencies = {
+            --         'mfussenegger/nvim-dap',
+            --         'nvim-treesitter/nvim-treesitter',
+            --     },
+            -- },
         },
         event = 'VeryLazy',
         config = function()
