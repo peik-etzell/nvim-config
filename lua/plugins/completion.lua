@@ -115,6 +115,13 @@ return {
                         async = false,
                         fallbacks = { 'buffer' },
                     },
+                    ['easy-dotnet'] = {
+                        name = 'easy-dotnet',
+                        enabled = true,
+                        module = 'easy-dotnet.completion.blink',
+                        score_offset = 10000,
+                        async = true,
+                    },
                     buffer = {
                         name = 'Buffer',
                         transform_items = function(a, items)
