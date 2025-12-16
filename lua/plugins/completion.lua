@@ -99,7 +99,7 @@ return {
                     -- if is_dap_buffer() then
                     --     return { 'dap', 'snippets', 'buffer' }
                     -- else
-                    return { 'lsp', 'easy-dotnet', 'path', 'snippets' }
+                    return { 'lsp', 'path', 'snippets' }
                     -- end
                 end,
                 providers = {
@@ -115,13 +115,13 @@ return {
                         async = false,
                         fallbacks = { 'buffer' },
                     },
-                    ['easy-dotnet'] = {
-                        name = 'easy-dotnet',
-                        enabled = true,
-                        module = 'easy-dotnet.completion.blink',
-                        score_offset = 10000,
-                        async = true,
-                    },
+                    -- ['easy-dotnet'] = {
+                    --     name = 'easy-dotnet',
+                    --     enabled = true,
+                    --     module = 'easy-dotnet.completion.blink',
+                    --     score_offset = 10000,
+                    --     async = true,
+                    -- },
                     buffer = {
                         name = 'Buffer',
                         transform_items = function(a, items)
