@@ -7,12 +7,15 @@ local netcoredbg = vim.g.is_windows
 return {
     'GustavEikaas/easy-dotnet.nvim',
     enabled = vim.fn.executable('dotnet') == 1,
-    ft = { "cs", "csproj", "sln", "slnx", "props", "csx", "targets" },
+    ft = { 'cs', 'csproj', 'sln', 'slnx', 'props', 'csx', 'targets' },
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope.nvim',
     },
     opts = {
+        lsp = {
+            auto_refresh_codelens = false,
+        },
         debugger = {
             bin_path = netcoredbg,
         },
