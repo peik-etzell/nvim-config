@@ -7,6 +7,10 @@ return {
         'williamboman/mason.nvim',
         config = function()
             local options = {
+                registries = {
+                    'file:' .. vim.fn.stdpath('config'),
+                    'github:mason-org/mason-registry',
+                },
                 max_concurrent_installers = 10,
                 ensure_installed = {
                     'asm-lsp',
