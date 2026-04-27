@@ -31,6 +31,7 @@ return {
                     'lua-language-server',
                     'marksman',
                     'neocmakelsp',
+                    'prettier',
                     'shfmt',
                     'slang',
                     'stylua',
