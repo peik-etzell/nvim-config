@@ -1,6 +1,6 @@
 local mason_pkgs = vim.fn.stdpath('data') .. '/mason/packages'
 local netcoredbg = vim.g.is_windows
-        and mason_pkgs .. '/netcoredbg/netcoredbg/netcoredbg.exe'
+    and mason_pkgs .. '/netcoredbg/netcoredbg/netcoredbg.exe'
     or vim.g.is_nixos and 'netcoredbg'
     or mason_pkgs .. '/netcoredbg/netcoredbg'
 

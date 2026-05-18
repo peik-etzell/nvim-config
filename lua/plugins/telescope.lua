@@ -1,8 +1,9 @@
 return {
     {
+        enabled = false,
         'nvim-telescope/telescope.nvim',
         cmd = 'Telescope',
-        branch = 'master',
+        tag = 'v0.2.2',
         dependencies = {
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },

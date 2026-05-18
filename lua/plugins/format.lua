@@ -7,48 +7,42 @@ local function deno_overwrite()
     end
 end
 
-return {
+vim.pack.add({
     {
-        'stevearc/conform.nvim',
-        event = { 'BufWritePre' },
-        cmd = { 'ConformInfo' },
-        keys = {
-            {
-                '<leader>s',
-                function()
-                    require('conform').format({
-                        async = true,
-                        lsp_format = 'fallback',
-                    })
-                end,
-                mode = '',
-                desc = 'Format buffer',
-            },
-        },
-        opts = {
-            formatters_by_ft = {
-                proto = { 'buf' },
-                python = { 'black' },
-
-                lua = { 'stylua' },
-
-                sh = { 'shfmt' },
-
-                -- cmake = { 'cmake_format' },
-
-                javascript = deno_overwrite(),
-                typescript = deno_overwrite(),
-                javascriptreact = deno_overwrite(),
-                typescriptreact = deno_overwrite(),
-
-                astro = deno_overwrite(),
-                nix = { 'nixfmt' },
-                typst = { 'typstyle' },
-
-                markdown = { 'deno_fmt' },
-                json = { 'deno_fmt' },
-                jsonc = { 'deno_fmt' },
-            },
-        },
+        src = 'https://github.com/stevearc/conform.nvim',
+        version = vim.version.range('v9.*'),
     },
-}
+})
+
+require('conform').setup({
+    formatters = {},
+    formatters_by_ft = {
+        lua = { 'stylua' },
+        proto = { 'buf' },
+        python = { 'black' },
+        sh = { 'shfmt' },
+        javascript = deno_overwrite(),
+        typescript = deno_overwrite(),
+        javascriptreact = deno_overwrite(),
+        typescriptreact = deno_overwrite(),
+
+        astro = deno_overwrite(),
+        nix = { 'nixfmt' },
+        typst = { 'typstyle' },
+
+        markdown = { 'deno_fmt' },
+        json = { 'deno_fmt' },
+        jsonc = { 'deno_fmt' },
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
+    },
+})
+
+vim.keymap.set('n', '<leader>s', function()
+    require('conform').format({
+        async = true,
+        lsp_format = 'fallback',
+    })
+end, {
+    desc = 'Format buffer',
+})

@@ -76,6 +76,13 @@ return {
                     },
                 }
 
+                adapters.cppdbg = {
+                    id = 'cppdbg',
+                    type = 'executable',
+                    command = mason_pkgs
+                        .. '/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+                }
+
                 -- C#
                 local netcoredbg = vim.g.is_windows
                         and mason_pkgs .. '/netcoredbg/netcoredbg/netcoredbg.exe'
@@ -123,9 +130,19 @@ return {
                     stopAtBeginningOfMainSubprogram = true,
                 }
 
+                local cppdbg_config = {
+                    name = 'cppdbg',
+                    type = 'cppdbg',
+                    request = 'launch',
+                    program = pick_file_with_dbgsym,
+                    cwd = '${workspaceFolder}',
+                    stopAtEntry = true,
+                }
+
                 configurations.cpp = {
                     gdb_config,
                     gdbserver_config,
+                    cppdbg_config,
                 }
                 configurations.c = configurations.cpp
                 configurations.rust = configurations.cpp

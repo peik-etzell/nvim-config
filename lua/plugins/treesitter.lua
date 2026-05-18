@@ -1,32 +1,60 @@
+-- vim.api.nvim_create_autocmd('PackChanged', {
+--     callback = function(ev)
+--         local name, kind = ev.data.spec.name, ev.data.kind
+--         if name == 'nvim-treesitter' and kind == 'update' then
+--             if not ev.data.active then
+--                 vim.cmd.packadd('nvim-treesitter')
+--             end
+--             vim.cmd('TSUpdate')
+--         end
+--     end,
+-- })
+
+vim.pack.add({
+    {
+        src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+        -- version = 'main',
+    },
+})
+
+require('nvim-treesitter').setup()
+require('nvim-treesitter').install({
+    'bash',
+    'c',
+    'cpp',
+    'lua',
+})
+
 return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         opts = {
-            autotag = {
-                enable = true,
-            },
-            sync_install = false,
-            auto_install = true,
-            highlight = {
-                enable = true,
-                disable = { 'latex', 'tex' },
-            },
-            indent = {
-                enable = true,
-                disable = { 'typescript', 'c', 'cpp' },
-            },
-            context_commentstring = { enable = true, enable_autocmd = false },
-            ensure_installed = {},
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = '<C-space>',
-                    node_incremental = '<C-space>',
-                    scope_incremental = '<nop>',
-                    node_decremental = '<bs>',
-                },
-            },
+            -- install_dir = vim.fn.stdpath('data') .. '/site',
+            -- autotag = {
+            --     enable = true,
+            -- },
+            -- sync_install = false,
+            -- auto_install = true,
+            -- highlight = {
+            --     enable = true,
+            --     disable = { 'latex', 'tex' },
+            -- },
+            -- indent = {
+            --     enable = true,
+            --     disable = { 'typescript', 'c', 'cpp' },
+            -- },
+            -- context_commentstring = { enable = true, enable_autocmd = false },
+            -- ensure_installed = {},
+            -- incremental_selection = {
+            --     enable = true,
+            --     keymaps = {
+            --         init_selection = '<C-space>',
+            --         node_incremental = '<C-space>',
+            --         scope_incremental = '<nop>',
+            --         node_decremental = '<bs>',
+            --     },
+            -- },
         },
         branch = 'main',
         dependencies = {

@@ -1,0 +1,60 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "conform.nvim": {
+      "rev": "3543d000dafbc41cc7761d860cfdb24e82154f75",
+      "src": "https://github.com/stevearc/conform.nvim",
+      "version": "9.0.0 - 10.0.0"
+    },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
+    "mason.nvim": {
+      "rev": "8e921c2b68571e978db5d4d3fef9c9a7f8755473",
+      "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "mini.comment": {
+      "rev": "fc87ba6554f182161d9a4bab5017c575571f000f",
+      "src": "https://github.com/nvim-mini/mini.comment"
+    },
+    "mini.pairs": {
+      "rev": "d5a29b6254dad07757832db505ea5aeab9aad43a",
+      "src": "https://github.com/nvim-mini/mini.pairs",
+      "version": "'stable'"
+    },
+    "mini.pick": {
+      "rev": "6b7974543b17cf2e294993fc3d8545a342258232",
+      "src": "https://github.com/nvim-mini/mini.pick",
+      "version": "'stable'"
+    },
+    "nvim-comment": {
+      "rev": "e9ac16ab056695cad6461173693069ec070d2b23",
+      "src": "https://github.com/terrortylor/nvim-comment"
+    },
+    "nvim-lspconfig": {
+      "rev": "3de240997fc3208eb29df5e5c17ba4665961bd84",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-tree.lua": {
+      "rev": "07f541fcaa4a5ae019598240362449ab7e9812b3",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua"
+    },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-web-devicons": {
+      "rev": "7d8dad2c837fcdf2e65997e68657c1a21c568074",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    }
+  }
+}

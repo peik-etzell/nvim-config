@@ -55,7 +55,7 @@ set.splitbelow = true
 
 -- folding
 set.foldmethod = 'expr'
-set.foldexpr = 'nvim_treesitter#foldexpr()'
+-- set.foldexpr = 'nvim_treesitter#foldexpr()'
 set.foldenable = false
 set.foldlevel = 99
 
@@ -78,7 +78,9 @@ nmap('<leader>s', function()
     vim.lsp.buf.format({
         async = true,
         filter = function(server)
-            return server.name ~= 'lua_ls' and server.name ~= 'tsserver'
+            return server.name ~= 'lua_ls'
+                and server.name ~= 'tsserver'
+                and server.name ~= 'clangd'
         end,
     })
 end, 'Format file')
@@ -131,31 +133,33 @@ require('terminal')
 -- require('termdebug')
 require('clang-format')
 require('autocmd')
+require('config.lsp')
+require('plugins')
 
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-    local out = vim.fn.system({
-        'git',
-        'clone',
-        '--filter=blob:none',
-        '--branch=stable',
-        lazyrepo,
-        lazypath,
-    })
-    if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
-            { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-            { out, 'WarningMsg' },
-            { '\nPress any key to continue...' },
-        }, true, {})
-        vim.fn.getchar()
-    end
-end
-vim.opt.rtp:prepend(lazypath)
-require('lazy').setup({
-    spec = { import = 'plugins' },
-    ui = { border = vim.o.winborder },
-    change_detection = { notify = false },
-    performance = { rtp = { reset = false } },
-})
+-- local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+-- if not (vim.uv or vim.loop).fs_stat(lazypath) then
+--     local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+--     local out = vim.fn.system({
+--         'git',
+--         'clone',
+--         '--filter=blob:none',
+--         '--branch=stable',
+--         lazyrepo,
+--         lazypath,
+--     })
+--     if vim.v.shell_error ~= 0 then
+--         vim.api.nvim_echo({
+--             { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+--             { out, 'WarningMsg' },
+--             { '\nPress any key to continue...' },
+--         }, true, {})
+--         vim.fn.getchar()
+--     end
+-- end
+-- vim.opt.rtp:prepend(lazypath)
+-- require('lazy').setup({
+--     spec = { import = 'plugins' },
+--     ui = { border = vim.o.winborder },
+--     change_detection = { notify = false },
+--     performance = { rtp = { reset = false } },
+-- })
