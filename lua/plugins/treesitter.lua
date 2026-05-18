@@ -13,7 +13,7 @@
 vim.pack.add({
     {
         src = 'https://github.com/nvim-treesitter/nvim-treesitter',
-        -- version = 'main',
+        version = 'main',
     },
 })
 
@@ -22,7 +22,25 @@ require('nvim-treesitter').install({
     'bash',
     'c',
     'cpp',
+    'gitcommit',
+    'gitignore',
+    'html',
+    'javascript',
+    'json',
     'lua',
+    'make',
+    'markdown',
+    'nix',
+    'python',
+    'rust',
+    'sql',
+    'toml',
+    'tsx',
+    'typescript',
+    'typst',
+    'vim',
+    'yaml',
+    'zig',
 })
 
 return {
