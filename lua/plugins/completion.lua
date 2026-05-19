@@ -8,8 +8,17 @@ vim.pack.add({
         version = vim.version.range('v1.*'),
     },
     'https://github.com/rafamadriz/friendly-snippets',
-
     'https://github.com/L3MON4D3/LuaSnip',
+    'https://github.com/folke/lazydev.nvim',
+    'https://github.com/Bilal2453/luvit-meta',
+})
+
+require('lazydev').setup({
+    library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+    },
 })
 
 require('luasnip').config.set_config({
@@ -66,6 +75,11 @@ require('blink.cmp').setup({
     sources = {
         default = { 'lsp', 'path', 'snippets' },
         providers = {
+            lazydev = {
+                name = 'LazyDev',
+                module = 'lazydev.integrations.blink',
+                score_offset = 100,
+            },
             path = {
                 opts = {
                     get_cwd = function()
