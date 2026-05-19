@@ -25,13 +25,14 @@ local ensure_installed = {
     'lua-language-server',
     'marksman',
     'neocmakelsp',
+    'netcoredbg',
     'prettier',
     'shfmt',
     'slang',
     'stylua',
     'superhtml',
-    'yaml-language-server',
     'tree-sitter-cli',
+    'yaml-language-server',
 }
 
 require('mason').setup({
