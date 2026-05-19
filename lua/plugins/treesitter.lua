@@ -23,6 +23,7 @@ local filetypes = {
     'bash',
     'c',
     'c_sharp',
+    'cmake',
     'cpp',
     'gitcommit',
     'gitignore',
