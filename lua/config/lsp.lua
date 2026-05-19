@@ -46,7 +46,6 @@ vim.lsp.enable({
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP on_attach',
     callback = function(event)
-        print('on attach')
         local function nmap(lhs, rhs, desc)
             vim.keymap.set(
                 'n',
