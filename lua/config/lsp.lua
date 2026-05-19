@@ -79,3 +79,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         nmap('<tab>', vim.lsp.buf.code_action, 'Code action')
     end,
 })
+
+vim.keymap.set('n', 'gp', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end)
+vim.keymap.set('n', 'gn', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end)
