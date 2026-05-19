@@ -18,9 +18,11 @@ vim.pack.add({
 })
 
 require('nvim-treesitter').setup()
-require('nvim-treesitter').install({
+
+local filetypes = {
     'bash',
     'c',
+    'c_sharp',
     'cpp',
     'gitcommit',
     'gitignore',
@@ -41,6 +43,15 @@ require('nvim-treesitter').install({
     'vim',
     'yaml',
     'zig',
+}
+
+require('nvim-treesitter').install(filetypes)
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = filetypes,
+    callback = function()
+        vim.treesitter.start()
+    end,
 })
 
 return {
