@@ -26,6 +26,10 @@
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "gruvbox.nvim": {
+      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
@@ -52,6 +56,10 @@
       "src": "https://github.com/nvim-mini/mini.pick",
       "version": "'stable'"
     },
+    "nvim": {
+      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "src": "https://github.com/catppuccin/nvim"
+    },
     "nvim-comment": {
       "rev": "e9ac16ab056695cad6461173693069ec070d2b23",
       "src": "https://github.com/terrortylor/nvim-comment"
@@ -76,6 +84,10 @@
     "schemastore.nvim": {
       "rev": "a1fb3d4eb1c2ad42c5b3187ca24c57da5d42ab83",
       "src": "https://github.com/b0o/schemastore.nvim"
+    },
+    "vim-paper": {
+      "rev": "d8decc44569aec6247bae54d971e658bb8108399",
+      "src": "https://github.com/yorickpeterse/vim-paper"
     }
   }
 }
