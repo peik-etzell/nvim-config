@@ -46,10 +46,6 @@
       "rev": "8e921c2b68571e978db5d4d3fef9c9a7f8755473",
       "src": "https://github.com/williamboman/mason.nvim"
     },
-    "mini.comment": {
-      "rev": "fc87ba6554f182161d9a4bab5017c575571f000f",
-      "src": "https://github.com/nvim-mini/mini.comment"
-    },
     "mini.pairs": {
       "rev": "d5a29b6254dad07757832db505ea5aeab9aad43a",
       "src": "https://github.com/nvim-mini/mini.pairs",
@@ -63,10 +59,6 @@
     "nvim": {
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
-    },
-    "nvim-comment": {
-      "rev": "e9ac16ab056695cad6461173693069ec070d2b23",
-      "src": "https://github.com/terrortylor/nvim-comment"
     },
     "nvim-lspconfig": {
       "rev": "3de240997fc3208eb29df5e5c17ba4665961bd84",
