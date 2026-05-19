@@ -34,6 +34,7 @@ local filetypes = {
     'make',
     'markdown',
     'nix',
+    'proto',
     'python',
     'rust',
     'sql',
