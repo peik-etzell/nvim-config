@@ -77,5 +77,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         nmap('grr', vim.lsp.buf.references, 'List references')
         nmap('gd', vim.lsp.buf.definition, 'Goto definition')
         nmap('gi', vim.lsp.buf.implementation, 'Goto implementation')
+        nmap('<tab>', vim.lsp.buf.code_action, 'Code action')
     end,
 })
