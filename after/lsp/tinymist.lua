@@ -1,3 +1,4 @@
+--- @type vim.lsp.Config
 return {
     root_markers = { 'main.typ' },
     single_file_support = true,
