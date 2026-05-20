@@ -1,7 +1,6 @@
-vim.pack.add({
-    'https://github.com/nvim-tree/nvim-tree.lua',
-    'https://github.com/nvim-tree/nvim-web-devicons',
-})
+require('plugins.icons')
+
+vim.pack.add({ 'https://github.com/nvim-tree/nvim-tree.lua' })
 
 require('nvim-tree').setup({
     notify = {
@@ -56,5 +55,3 @@ end, 'Sidebar - Focus file')
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
---dependencies = { 'nvim-tree/nvim-web-devicons' },
