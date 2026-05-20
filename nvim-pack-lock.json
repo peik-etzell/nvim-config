@@ -19,7 +19,7 @@
       "version": "9.0.0 - 10.0.0"
     },
     "easy-dotnet.nvim": {
-      "rev": "5bdd2b8f6891c64607393698be7fd0f441443c1d",
+      "rev": "93c3af27c0bc02cf7a542854789836409c993858",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "friendly-snippets": {
