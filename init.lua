@@ -126,14 +126,5 @@ if vim.g.is_wsl then
     }
 end
 
-require('config.window-management')
-require('config.wrap')
-require('config.fix_comment_strings')
-require('config.terminal')
--- require('config.termdebug')
-require('config.clang-format')
-require('config.autocmd')
-require('config.lsp')
-require('config.comment')
-require('config.ui2')
+require('config')
 require('plugins')
