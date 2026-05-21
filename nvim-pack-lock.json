@@ -53,8 +53,7 @@
     },
     "mini.pick": {
       "rev": "6b7974543b17cf2e294993fc3d8545a342258232",
-      "src": "https://github.com/nvim-mini/mini.pick",
-      "version": "'stable'"
+      "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.statusline": {
       "rev": "7091f554d7d26b5d55f4c937634da53ba277a44a",
