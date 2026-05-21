@@ -1,11 +1,11 @@
 vim.pack.add({
     'https://github.com/yorickpeterse/vim-paper',
     'https://github.com/catppuccin/nvim',
-    'https://github.com/ellisonleao/gruvbox.nvim',
+    'https://github.com/f4z3r/gruvbox-material.nvim',
 })
 
 require('catppuccin').setup()
-require('gruvbox').setup()
+require('gruvbox-material').setup()
 
 local default = 'habamax'
 local store_path = vim.fn.stdpath('state') .. '/colorscheme'
