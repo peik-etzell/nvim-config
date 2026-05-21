@@ -17,25 +17,33 @@ local function load()
         return
     end
 
-    local stored = f:read('*a')
+    local colorscheme = f:read('*l')
+    local background = f:read('*l')
     f:close()
 
-    if not stored then
+    if not colorscheme or colorscheme == '' then
         vim.cmd.colorscheme(default)
         return
     end
 
-    vim.cmd.colorscheme(stored)
+    if background and (background == 'light' or background == 'dark') then
+        vim.o.background = background
+    end
+
+    local ok = pcall(vim.cmd.colorscheme, colorscheme)
+    if not ok then
+        vim.cmd.colorscheme(default)
+    end
+end
+
+local function save()
+    local f = io.open(store_path, 'w')
+    if f then
+        f:write(vim.g.colors_name .. '\n' .. vim.o.background)
+        f:close()
+    end
 end
 
 load()
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-    callback = function()
-        local f = io.open(store_path, 'w')
-        if f then
-            f:write(vim.g.colors_name)
-            f:close()
-        end
-    end,
-})
+vim.api.nvim_create_autocmd('ColorScheme', { callback = save })
