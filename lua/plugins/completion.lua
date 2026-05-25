@@ -31,18 +31,10 @@ require('luasnip.loaders.from_lua').lazy_load({
 require('blink.cmp').setup({
     keymap = {
         preset = 'super-tab',
-        -- ['<Tab>'] = {
-        --     'select_and_accept',
-        --     function(cmp)
-        --         if vim.bo.filetype == 'dap-repl' then
-        --             cmp.show()
-        --             return true
-        --         else
-        --             return false
-        --         end
-        --     end,
-        --     'fallback',
-        -- },
+        ['<Tab>'] = {
+            'select_and_accept',
+            'fallback',
+        },
         ['<C-l>'] = { 'snippet_forward' },
         ['<C-h>'] = { 'snippet_backward' },
     },
