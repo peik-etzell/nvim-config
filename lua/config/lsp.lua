@@ -61,6 +61,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             --     require('dapui').eval()
             -- else
             vim.lsp.buf.hover({
+                max_width = 80,
                 close_events = {
                     'CursorMoved',
                     'BufLeave',
