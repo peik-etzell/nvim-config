@@ -84,6 +84,10 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "powershell.nvim": {
+      "rev": "3ac437e45ff54bb4c0ce64ff044cd0c47e396a25",
+      "src": "https://github.com/TheLeoP/powershell.nvim"
+    },
     "schemastore.nvim": {
       "rev": "a1fb3d4eb1c2ad42c5b3187ca24c57da5d42ab83",
       "src": "https://github.com/b0o/schemastore.nvim"

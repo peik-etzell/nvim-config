@@ -10,6 +10,7 @@ require('plugins.git')
 require('plugins.dotnet')
 require('plugins.colors')
 require('plugins.status')
+require('plugins.powershell')
 
 if not vim.g.is_nixos then
     require('plugins.mason')

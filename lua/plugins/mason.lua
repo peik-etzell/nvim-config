@@ -1,5 +1,3 @@
-vim.g.use_mason = not vim.g.is_nixos
-
 vim.pack.add({
     {
         src = 'https://github.com/williamboman/mason.nvim',
@@ -26,6 +24,7 @@ local ensure_installed = {
     'marksman',
     'neocmakelsp',
     'netcoredbg',
+    'powershell-editor-services',
     'prettier',
     'shfmt',
     'slang',
