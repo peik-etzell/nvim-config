@@ -1,28 +1,11 @@
 local set = vim.opt
 
-vim.g.do_filetype_lua = 1
-
 local sysname = vim.uv.os_uname().sysname
 vim.g.is_linux = sysname == 'Linux'
 vim.g.is_nixos = vim.fn.filereadable('/etc/NIXOS') ~= 0
 vim.g.is_wsl = vim.g.is_linux
     and vim.uv.os_uname().release:lower():find('microsoft')
 vim.g.is_windows = sysname == 'Windows_NT'
-
-vim.filetype.add({
-    extension = {
-        eta = 'html',
-        gnuplot = 'gnuplot',
-        hlsl = 'hlsl',
-        plt = 'gnuplot',
-        repos = 'yaml',
-        rviz = 'yaml',
-        scad = 'openscad',
-        typ = 'typst',
-        xaml = 'xml',
-        xkb = 'xkb',
-    },
-})
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
