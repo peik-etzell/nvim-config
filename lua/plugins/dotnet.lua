@@ -17,11 +17,13 @@ if vim.fn.executable('dotnet') == 1 then
     local opts = {
         lsp = {
             auto_refresh_codelens = false,
+            set_fold_expr = true,
         },
         debugger = {
             bin_path = netcoredbg,
         },
         notifications = { handler = false },
+        projx_lsp = { enabled = false },
     }
     require('easy-dotnet').setup(opts)
 
