@@ -43,6 +43,7 @@ local filetypes = {
     'typescript',
     'typst',
     'vim',
+    'xml',
     'yaml',
     'zig',
 }
