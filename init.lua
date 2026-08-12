@@ -49,7 +49,7 @@ end
 unmap({ 'n', 'i', 't' }, '<D-Space>')
 unmap('n', '<BS>')
 unmap({ 'n', 'v' }, ' ')
-unmap({ 'n', 'v' }, '<CR>')
+-- unmap({ 'n', 'v' }, '<CR>')
 unmap({ 'n', 'v' }, '<Del>')
 
 local function nmap(lhs, rhs, desc)
