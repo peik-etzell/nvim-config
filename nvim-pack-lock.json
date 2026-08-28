@@ -19,7 +19,7 @@
       "version": "9.0.0 - 10.0.0"
     },
     "easy-dotnet.nvim": {
-      "rev": "5823c50d0de015c01f591319f6e846506518165e",
+      "rev": "0a8cfb96e40b985921e6613f31f75811e31b8edf",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "friendly-snippets": {
@@ -27,7 +27,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
+      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox-material.nvim": {
@@ -60,19 +60,28 @@
       "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "nvim": {
-      "rev": "79e2049a0fdf7ec840f8463fe1d962c94493196b",
+      "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "nvim-dap": {
+      "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
+      "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-view": {
+      "rev": "210b2c0e4acc08aad23fbd5a7989dd0169f716d0",
+      "src": "https://github.com/igorlfs/nvim-dap-view",
+      "version": "1.0.0 - 2.0.0"
+    },
     "nvim-lspconfig": {
-      "rev": "7ab79bb1b57160a537f427ac8a6026102f12b701",
+      "rev": "bff1bd61cb1455040533201ca1edf1e84efa578f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tree.lua": {
-      "rev": "4213bd6eabac38b16dd6615002b6243b23cf3bf6",
+      "rev": "b2aadda94b107480c48e548d6db51c6840b7b33c",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
     },
     "nvim-treesitter": {
-      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
+      "rev": "074aa4422bf029908338e855d0c0f71470a971bb",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -85,11 +94,11 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "powershell.nvim": {
-      "rev": "0c775f1c245f9e6b3e9adb20533bbc9bea00c599",
+      "rev": "faafb829db0979b4a5962fe0d10a58830413bcd2",
       "src": "https://github.com/TheLeoP/powershell.nvim"
     },
     "schemastore.nvim": {
-      "rev": "19e40cef03a380bfb578793a08222826118664dd",
+      "rev": "73e89eb3e536a4dd8f991c963bd37189520c9919",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "vim-paper": {

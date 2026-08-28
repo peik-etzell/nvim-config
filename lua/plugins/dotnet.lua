@@ -1,3 +1,5 @@
+require('plugins.dap')
+
 vim.pack.add({
     'https://github.com/GustavEikaas/easy-dotnet.nvim',
     'https://github.com/nvim-lua/plenary.nvim',
@@ -20,6 +22,7 @@ if vim.fn.executable('dotnet') == 1 then
             set_fold_expr = true,
         },
         debugger = {
+            engine = 'netcoredbg',
             bin_path = netcoredbg,
         },
         notifications = { handler = false },
