@@ -99,6 +99,11 @@ vim.api.nvim_create_autocmd({ 'BufLeave' }, {
     end,
 })
 
+dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+
+--------------
+-- ADAPTERS --
+--------------
 local netcoredbg = vim.g.is_windows
         and mason_pkgs .. '/netcoredbg/netcoredbg/netcoredbg.exe'
     or vim.g.is_nixos and 'netcoredbg'
@@ -110,7 +115,114 @@ adapters.dotnet = {
     args = { '--interpreter=vscode' },
 }
 
-dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+adapters.gdb = {
+    type = 'executable',
+    command = 'gdb',
+    args = {
+        '--interpreter=dap',
+        '--eval-command',
+        'set print pretty on',
+        '--eval-command',
+        'set print array on',
+        '--eval-command',
+        'set print address off',
+    },
+}
+
+adapters.codelldb = {
+    name = 'codelldb',
+    type = 'server',
+    port = '${port}',
+    executable = {
+        command = 'codelldb', -- or if not in $PATH: "/absolute/path/to/codelldb"
+        args = { '--port', '${port}' },
+
+        -- On windows you may have to uncomment this:
+        -- detached = false,
+    },
+}
+
+-- Cpptools
+if vim.g.is_nixos then
+    pcall(function()
+        vim.system({
+            'nix',
+            'eval',
+            '--impure', -- read env
+            '--raw',
+            'nixpkgs#vscode-extensions.ms-vscode.cpptools.outPath',
+        }, {
+            env = {
+                NIXPKGS_ALLOW_UNFREE = 1,
+            },
+        }, function(obj)
+            local opendebug = obj.stdout
+                .. '/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7'
+            print(opendebug)
+            adapters.cppdbg = {
+                id = 'cppdbg',
+                type = 'executable',
+                command = opendebug,
+            }
+        end)
+    end)
+else
+    adapters.cppdbg = {
+        id = 'cppdbg',
+        type = 'executable',
+        command = mason_pkgs
+            .. '/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+    }
+end
+
+--------------------
+-- CONFIGURATIONS --
+--------------------
+local gdbserver_config = {
+    name = 'gdbserver at localhost:1234',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    program = pick_file_with_dbgsym,
+    setupCommands = {
+        {
+            text = '-enable-pretty-printing',
+            description = 'enable pretty printing',
+            ignoreFailures = false,
+        },
+    },
+}
+local gdb_config = {
+    name = 'GDB',
+    type = 'gdb',
+    request = 'launch',
+    program = pick_file_with_dbgsym,
+    cwd = '${workspaceFolder}',
+    stopAtBeginningOfMainSubprogram = true,
+}
+
+local cppdbg_config = {
+    name = 'cppdbg',
+    type = 'cppdbg',
+    request = 'launch',
+    program = pick_file_with_dbgsym,
+    cwd = '${workspaceFolder}',
+    stopAtEntry = true,
+}
+
+local c_cpp_rust_config = {
+    gdb_config,
+    gdbserver_config,
+    cppdbg_config,
+}
+
+configurations.cpp = c_cpp_rust_config
+configurations.c = c_cpp_rust_config
+configurations.rust = c_cpp_rust_config
+-- configurations.zig = { lldb_config }
 
 -- return {
 --     {
