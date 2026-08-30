@@ -84,7 +84,6 @@ map('n', '<Left>', dap.step_out, 'Step out')
 map('n', '<leader>drr', dap.continue, 'Continue')
 map('n', '<leader>drc', dap.run_to_cursor, 'Run to cursor')
 
-map('n', '<C-k>', dap_view.hover, 'Dap Hover')
 
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
     pattern = { '[dap-repl-*' },

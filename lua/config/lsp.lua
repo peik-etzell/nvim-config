@@ -43,6 +43,15 @@ vim.lsp.enable({
     -- 'basedpyright',
 })
 
+local function dap_hover()
+    return pcall(function()
+        if require('dap').status() == '' then
+            error()
+        end
+        require('dap-view').hover()
+    end, {})
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP on_attach',
     callback = function(event)
@@ -57,19 +66,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
         nmap('<C-S-k>', vim.lsp.buf.signature_help, 'Signature help')
         nmap('<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
         nmap('K', function()
-            -- if require('dap').status() ~= '' then
-            --     require('dapui').eval()
-            -- else
-            vim.lsp.buf.hover({
-                max_width = 80,
-                close_events = {
-                    'CursorMoved',
-                    'BufLeave',
-                    'WinLeave',
-                    'FocusLost',
-                    'CmdlineEnter',
-                },
-            })
+            if not dap_hover() then
+                vim.lsp.buf.hover({
+                    max_width = 80,
+                    close_events = {
+                        'CursorMoved',
+                        'BufLeave',
+                        'WinLeave',
+                        'FocusLost',
+                        'CmdlineEnter',
+                    },
+                })
+            end
             -- end
         end, 'Symbol information')
 
