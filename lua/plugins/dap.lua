@@ -157,7 +157,6 @@ if vim.g.is_nixos then
         }, function(obj)
             local opendebug = obj.stdout
                 .. '/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7'
-            print(opendebug)
             adapters.cppdbg = {
                 id = 'cppdbg',
                 type = 'executable',
