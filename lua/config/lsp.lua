@@ -45,7 +45,7 @@ vim.lsp.enable({
 
 local function dap_hover()
     return pcall(function()
-        if require('dap').status() == '' then
+        if require('dap').session() == nil then
             error()
         end
         require('dap-view').hover()
