@@ -13,9 +13,9 @@ vim.lsp.config('*', {
 vim.lsp.enable({
     'asm_lsp',
     'autotools_ls',
+    'basedpyright',
     'bashls',
     'clangd',
-    'neocmake',
     'cssls',
     'denols',
     'docker_compose_language_service',
@@ -29,10 +29,10 @@ vim.lsp.enable({
     'lemminx',
     'lua_ls',
     'marksman',
+    'neocmake',
     'nil_ls',
     'openscad_lsp',
     'postgres_lsp',
-    'basedpyright',
     'slangd',
     'superhtml',
     'svelte',
@@ -67,18 +67,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         nmap('<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
         nmap('K', function()
             if not dap_hover() then
-                vim.lsp.buf.hover({
-                    max_width = 80,
-                    close_events = {
-                        'CursorMoved',
-                        'BufLeave',
-                        'WinLeave',
-                        'FocusLost',
-                        'CmdlineEnter',
-                    },
-                })
+                vim.lsp.buf.hover({ max_width = 80 })
             end
-            -- end
         end, 'Symbol information')
 
         nmap('gt', vim.lsp.buf.type_definition, 'Goto type definition')
