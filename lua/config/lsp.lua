@@ -33,6 +33,7 @@ vim.lsp.enable({
     'nil_ls',
     'openscad_lsp',
     'postgres_lsp',
+    'rust_analyzer',
     'slangd',
     'superhtml',
     'svelte',

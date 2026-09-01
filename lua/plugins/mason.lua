@@ -26,6 +26,7 @@ local ensure_installed = {
     'netcoredbg',
     'powershell-editor-services',
     'prettier',
+    'rust-analyzer',
     'shfmt',
     'slang',
     'stylua',
