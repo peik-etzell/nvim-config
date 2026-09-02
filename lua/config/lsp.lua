@@ -15,6 +15,7 @@ vim.lsp.enable({
     'autotools_ls',
     'basedpyright',
     'bashls',
+    'buf_ls',
     'clangd',
     'cssls',
     'denols',
