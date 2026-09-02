@@ -15,7 +15,7 @@ local ensure_installed = {
     'css-lsp',
     'deno',
     'docker-compose-language-service',
-    'docker-language-server',
+    'dockerfile-language-server',
     'eslint-lsp',
     'html-lsp',
     'json-lsp',
