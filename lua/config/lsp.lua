@@ -27,7 +27,6 @@ vim.lsp.enable({
     'html',
     'json',
     'jsonls',
-    'lemminx',
     'lua_ls',
     'marksman',
     'neocmake',

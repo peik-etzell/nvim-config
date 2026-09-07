@@ -64,6 +64,7 @@ nmap('<leader>s', function()
             return server.name ~= 'lua_ls'
                 and server.name ~= 'tsserver'
                 and server.name ~= 'clangd'
+                and server.name ~= 'easy_dotnet'
         end,
     })
 end, 'Format file')

@@ -26,6 +26,9 @@ require('conform').setup({
         javascriptreact = deno_overwrite(),
         typescriptreact = deno_overwrite(),
 
+        xml = { 'csharpier' },
+        cs = { 'csharpier' },
+
         astro = deno_overwrite(),
         nix = { 'nixfmt' },
         typst = { 'typstyle' },
