@@ -57,18 +57,6 @@ local function nmap(lhs, rhs, desc)
 end
 
 nmap('<C-k>', vim.diagnostic.open_float, 'Open diagnostics')
-nmap('<leader>s', function()
-    vim.lsp.buf.format({
-        async = true,
-        filter = function(server)
-            return server.name ~= 'lua_ls'
-                and server.name ~= 'tsserver'
-                and server.name ~= 'clangd'
-                and server.name ~= 'easy_dotnet'
-        end,
-    })
-end, 'Format file')
-
 nmap('<ESC>', function()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         if vim.api.nvim_win_get_config(win).relative == 'win' then
