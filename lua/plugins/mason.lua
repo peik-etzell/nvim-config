@@ -12,6 +12,7 @@ local ensure_installed = {
     'buf',
     'clang-format',
     'clangd',
+    'csharpier',
     'css-lsp',
     'deno',
     'docker-compose-language-service',
