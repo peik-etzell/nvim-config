@@ -20,6 +20,7 @@ if vim.fn.executable('dotnet') == 1 then
         lsp = {
             auto_refresh_codelens = false,
             set_fold_expr = true,
+            restart_roslyn_on_branch_change = true,
         },
         debugger = {
             engine = 'netcoredbg',
