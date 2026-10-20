@@ -11,6 +11,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
 vim.o.winborder = 'rounded'
+vim.o.exrc = true
+vim.o.secure = true
 
 -- set.mouse = nil
 set.mouse = 'nv'
