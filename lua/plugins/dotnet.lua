@@ -21,7 +21,9 @@ if vim.fn.executable('dotnet') == 1 then
             auto_refresh_codelens = false,
             set_fold_expr = true,
             restart_roslyn_on_branch_change = true,
+            razor = { enabled = false },
         },
+        auto_bootstrap_namespace = { type = 'file_scoped' },
         debugger = {
             engine = 'netcoredbg',
             bin_path = netcoredbg,
