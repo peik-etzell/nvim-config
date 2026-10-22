@@ -30,6 +30,7 @@ if vim.fn.executable('dotnet') == 1 then
         },
         notifications = { handler = false },
         projx_lsp = { enabled = false },
+        server = { use_visual_studio = true },
     }
     require('easy-dotnet').setup(opts)
 
