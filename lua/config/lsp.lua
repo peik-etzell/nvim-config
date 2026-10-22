@@ -83,6 +83,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.keymap.set('n', 'gp', function()
     vim.diagnostic.jump({ count = -1, float = true })
 end)
+
 vim.keymap.set('n', 'gn', function()
     vim.diagnostic.jump({ count = 1, float = true })
 end)
+
+vim.keymap.set('n', '<leader>qf', function()
+    vim.diagnostic.setqflist({ open = true })
+end, { desc = 'Diagnostics to quickfix' })
+
+vim.keymap.set('n', '<leader>ql', function()
+    vim.diagnostic.setloclist({ open = true })
+end, { desc = 'Buffer diagnostics to location list' })
